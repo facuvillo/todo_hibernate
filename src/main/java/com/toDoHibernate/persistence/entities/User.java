@@ -18,18 +18,18 @@ public class User {
     private String nickname;
 
     @Column(unique = true, nullable = false)
-    private String mail;
+    private String email;
 
     @Column(nullable = false)
     private String password;
 
     // TODO Agregar la busqueda por id para recuperar las colecciones
-    @OneToMany
-    private List<GroupList> groupsList = new ArrayList<>();
+    // @OneToMany
+    // private List<GroupList> groupsList = new ArrayList<>();
 
     // TODO Agregar la busqueda por id para recuperar las colecciones
-    @ManyToMany
-    private List<ListTasks> listTasks = new ArrayList<>();
+    // @ManyToMany
+    // private List<ListTasks> listTasks = new ArrayList<>();
 
     // Constructors
 
@@ -38,27 +38,27 @@ public class User {
     public User(Long id, String nickname, String mail, String password) {
         this.id = id;
         this.nickname = nickname;
-        this.mail = mail;
+        this.email = mail;
         this.password = password;
     }
 
     // Getters y Setters
 
-    public List<ListTasks> getListTasks() {
-        return listTasks;
-    }
-
-    public void setListTasks(List<ListTasks> listTasks) {
-        this.listTasks = listTasks;
-    }
-
-    public List<GroupList> getGroupsList() {
-        return groupsList;
-    }
-
-    public void setGroupsList(List<GroupList> groupsList) {
-        this.groupsList = groupsList;
-    }
+//    public List<ListTasks> getListTasks() {
+//        return listTasks;
+//    }
+//
+//    public void setListTasks(List<ListTasks> listTasks) {
+//        this.listTasks = listTasks;
+//    }
+//
+//    public List<GroupList> getGroupsList() {
+//        return groupsList;
+//    }
+//
+//    public void setGroupsList(List<GroupList> groupsList) {
+//        this.groupsList = groupsList;
+//    }
 
     public Long getId() {
         return id;
@@ -77,11 +77,11 @@ public class User {
     }
 
     public String getMail() {
-        return mail;
+        return email;
     }
 
     public void setMail(String mail) {
-        this.mail = mail;
+        this.email = mail;
     }
 
     public String getPassword() {
@@ -90,5 +90,15 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nickname='" + nickname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

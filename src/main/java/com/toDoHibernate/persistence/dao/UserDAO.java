@@ -11,6 +11,8 @@ public interface UserDAO {
 
     User findById(Long id);
 
+    User findByEmail(String email);
+
     User create(User user);
 
     User update(User user);

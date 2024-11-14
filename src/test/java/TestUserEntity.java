@@ -17,4 +17,15 @@ public class TestUserEntity{
         System.out.println(users);
 
     }
+
+    @Test
+    void findByEmail() {
+
+        UserDAO userDAO = new UserDAOImpl();
+
+        User user = userDAO.findByEmail("user1@example.com");
+
+        System.out.println(user);
+
+    }
 }

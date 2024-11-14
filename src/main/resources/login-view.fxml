@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #1d1d1d;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #1d1d1d;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toDoHibernate.igu.controllers.LoginViewController">
    <children>
       <Pane layoutX="425.0" layoutY="32.0" prefHeight="56.0" prefWidth="150.0">
          <children>
-            <Label layoutY="-13.0" prefHeight="56.0" prefWidth="117.0" style="-fx-text-fill: #666666;" text="HTD">
+            <Label layoutY="-13.0" prefHeight="56.0" prefWidth="117.0" style="-fx-text-fill: #666666;" text="HTD" textFill="#d0d0d0">
                <font>
                   <Font name="Yu Gothic UI Semibold" size="56.0" />
                </font>
@@ -24,5 +26,49 @@
             </ImageView>
          </children>
       </Pane>
+      <AnchorPane layoutX="316.0" layoutY="112.0" prefHeight="456.0" prefWidth="368.0">
+         <children>
+            <Label layoutX="105.0" layoutY="37.0" text="WELCOME" textFill="#d0d0d0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="23.0" layoutY="105.0" prefHeight="61.0" prefWidth="323.0">
+               <children>
+                  <Label layoutX="13.0" layoutY="2.0" text="USERNAME OR EMAIL" textAlignment="CENTER" textFill="#d0d0d0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="23.0" layoutY="201.0" prefHeight="61.0" prefWidth="323.0">
+               <children>
+                  <Label layoutX="13.0" layoutY="2.0" text="PASSWORD" textAlignment="CENTER" textFill="#d0d0d0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
+               </children>
+            </AnchorPane>
+            <Button id="btnLogIn" layoutX="23.0" layoutY="308.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="323.0" text="LOG IN" />
+            <AnchorPane layoutX="22.0" layoutY="356.0" prefHeight="21.0" prefWidth="323.0">
+               <children>
+                  <Label layoutX="61.0" layoutY="1.0" text="Don't have an account?" textFill="#d0d0d0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink layoutX="204.0" prefHeight="9.0" prefWidth="61.0" text="REGISTER">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

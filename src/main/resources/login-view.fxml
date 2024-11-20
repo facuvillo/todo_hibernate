@@ -61,7 +61,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Hyperlink layoutX="204.0" prefHeight="9.0" prefWidth="61.0" text="REGISTER">
+                  <Hyperlink layoutX="204.0" onAction="#changeRegisteView" prefHeight="9.0" prefWidth="61.0" text="REGISTER">
                      <font>
                         <Font name="System Bold" size="11.0" />
                      </font>

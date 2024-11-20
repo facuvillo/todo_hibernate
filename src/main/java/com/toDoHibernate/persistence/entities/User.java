@@ -23,6 +23,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+
+
     // TODO Agregar la busqueda por id para recuperar las colecciones
     // @OneToMany
     // private List<GroupList> groupsList = new ArrayList<>();

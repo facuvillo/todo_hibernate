@@ -7,8 +7,6 @@ import java.util.List;
 // TODO Agregar el CRUD básico completo
 public interface UserDAO {
 
-    List<User> findAll();
-
     User findById(Long id);
 
     User findByEmail(String email);

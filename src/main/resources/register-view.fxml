@@ -40,17 +40,17 @@
                                 <Font size="14.0" />
                             </font>
                         </Label>
-                        <TextField layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
+                        <TextField fx:id="txtEmail" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
                     </children>
                 </AnchorPane>
             <AnchorPane layoutX="23.0" layoutY="162.0" prefHeight="61.0" prefWidth="323.0">
                <children>
-                  <Label layoutX="13.0" layoutY="2.0" text="EMAIL" textAlignment="CENTER" textFill="#d0d0d0">
+                  <Label layoutX="13.0" layoutY="2.0" text="NICKNAME" textAlignment="CENTER" textFill="#d0d0d0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
+                  <TextField fx:id="txtNickname" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
                </children>
             </AnchorPane>
                 <AnchorPane layoutX="23.0" layoutY="234.0" prefHeight="61.0" prefWidth="323.0">
@@ -60,17 +60,17 @@
                                 <Font size="14.0" />
                             </font>
                         </Label>
-                        <TextField layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
+                        <TextField fx:id="txtPassword" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
                     </children>
                 </AnchorPane>
             <AnchorPane layoutX="23.0" layoutY="306.0" prefHeight="61.0" prefWidth="323.0">
                <children>
-                  <Label layoutX="13.0" layoutY="2.0" text="PASSWORD" textAlignment="CENTER" textFill="#d0d0d0">
+                  <Label layoutX="13.0" layoutY="2.0" text="REPEAT PASSWORD" textAlignment="CENTER" textFill="#d0d0d0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
+                  <TextField fx:id="txtConfirmPassword" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
                </children>
             </AnchorPane>
                 <Button id="btnLogIn" layoutX="23.0" layoutY="413.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="323.0" text="REGISTER ACCOUNT" />
@@ -81,7 +81,7 @@
                                 <Font size="14.0" />
                             </font>
                         </Label>
-                        <Hyperlink layoutX="204.0" onAction="#changeRegisteView" prefHeight="9.0" prefWidth="61.0" text="REGISTER">
+                        <Hyperlink layoutX="204.0" prefHeight="9.0" prefWidth="61.0" text="REGISTER">
                             <font>
                                 <Font name="System Bold" size="11.0" />
                             </font>

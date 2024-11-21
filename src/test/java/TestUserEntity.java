@@ -28,4 +28,23 @@ public class TestUserEntity{
         System.out.println(user);
 
     }
+
+    @Test
+    void createUser() {
+
+        UserDAO userDAO = new UserDAOImpl();
+        // Long id, String nickname, String mail, String password
+        User user = new User(null,"usuario1","ejemplo@example.com","s12345678");
+        userDAO.create(user);
+
+        User userDB = userDAO.findByEmail("ejemplo@example.com");
+        System.out.println(userDB);
+
+    }
+
+    @Test
+    void updateUser() {
+        UserDAO userDAO = new UserDAOImpl();
+
+    }
 }

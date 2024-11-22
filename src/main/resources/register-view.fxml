@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -28,12 +29,12 @@
         </Pane>
         <AnchorPane layoutX="316.0" layoutY="50.0" prefHeight="518.0" prefWidth="368.0">
             <children>
-                <Label layoutX="51.0" layoutY="21.0" text="ACCOUNT DATA" textFill="#d0d0d0">
+                <Label layoutX="51.0" layoutY="14.0" text="ACCOUNT DATA" textFill="#d0d0d0">
                     <font>
                         <Font size="36.0" />
                     </font>
                 </Label>
-                <AnchorPane layoutX="23.0" layoutY="85.0" prefHeight="61.0" prefWidth="323.0">
+                <AnchorPane layoutX="23.0" layoutY="65.0" prefHeight="80.0" prefWidth="323.0">
                     <children>
                         <Label layoutX="13.0" layoutY="2.0" text="EMAIL" textAlignment="CENTER" textFill="#d0d0d0">
                             <font>
@@ -41,9 +42,14 @@
                             </font>
                         </Label>
                         <TextField fx:id="txtEmail" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
+                  <Label fx:id="lblEmailValid" layoutX="12.0" layoutY="63.0" text="THE EMAIL HAS ALREADY BEEN REGISTERED" textAlignment="CENTER" textFill="#e85656" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                     </children>
                 </AnchorPane>
-            <AnchorPane layoutX="23.0" layoutY="162.0" prefHeight="61.0" prefWidth="323.0">
+            <AnchorPane layoutX="23.0" layoutY="150.0" prefHeight="80.0" prefWidth="323.0">
                <children>
                   <Label layoutX="13.0" layoutY="2.0" text="NICKNAME" textAlignment="CENTER" textFill="#d0d0d0">
                      <font>
@@ -51,37 +57,52 @@
                      </font>
                   </Label>
                   <TextField fx:id="txtNickname" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
+                  <Label fx:id="lblLongUsername" layoutX="13.0" layoutY="63.0" text="LESS THAN  20 CHARACTERS" textAlignment="CENTER" textFill="#e85656" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
-                <AnchorPane layoutX="23.0" layoutY="234.0" prefHeight="61.0" prefWidth="323.0">
+                <AnchorPane layoutX="23.0" layoutY="235.0" prefHeight="80.0" prefWidth="323.0">
                     <children>
                         <Label layoutX="13.0" layoutY="2.0" text="PASSWORD" textAlignment="CENTER" textFill="#d0d0d0">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="txtPassword" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
-                    </children>
-                </AnchorPane>
-            <AnchorPane layoutX="23.0" layoutY="306.0" prefHeight="61.0" prefWidth="323.0">
-               <children>
-                  <Label layoutX="13.0" layoutY="2.0" text="REPEAT PASSWORD" textAlignment="CENTER" textFill="#d0d0d0">
+                  <Label fx:id="lblPasswordConditions" layoutX="13.0" layoutY="63.0" textAlignment="CENTER" textFill="#e85656" visible="false">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtConfirmPassword" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
+                  <PasswordField fx:id="txtPassword" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" />
+                    </children>
+                </AnchorPane>
+            <AnchorPane layoutX="23.0" layoutY="320.0" prefHeight="80.0" prefWidth="323.0">
+               <children>
+                  <Label layoutX="13.0" layoutY="2.0" text="CONFIRM PASSWORD" textAlignment="CENTER" textFill="#d0d0d0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblConfirmPassword" layoutX="13.0" layoutY="63.0" textAlignment="CENTER" textFill="#e85656">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="txtConfirmPassword" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" />
                </children>
             </AnchorPane>
-                <Button id="btnLogIn" layoutX="23.0" layoutY="413.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="323.0" text="REGISTER ACCOUNT" />
-                <AnchorPane layoutX="23.0" layoutY="457.0" prefHeight="21.0" prefWidth="323.0">
+                <Button id="btnLogIn" fx:id="btnRegister" layoutX="23.0" layoutY="431.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="42.0" prefWidth="323.0" text="REGISTER ACCOUNT" />
+                <AnchorPane layoutX="23.0" layoutY="475.0" prefHeight="21.0" prefWidth="323.0">
                     <children>
-                        <Label layoutX="61.0" layoutY="1.0" text="Don't have an account?" textFill="#d0d0d0">
+                        <Label layoutX="62.0" text="Do you have an account?" textFill="#d0d0d0">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Label>
-                        <Hyperlink layoutX="204.0" prefHeight="9.0" prefWidth="61.0" text="REGISTER">
+                        <Hyperlink layoutX="217.0" layoutY="-1.0" prefHeight="22.0" prefWidth="45.0" text="LOGIN">
                             <font>
                                 <Font name="System Bold" size="11.0" />
                             </font>

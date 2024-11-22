@@ -12,9 +12,9 @@ public class TestUserEntity{
 
         UserDAO userDAO = new UserDAOImpl();
 
-        List<User> users = userDAO.findAll();
+        User userDB = userDAO.findByEmail("ejemplo@gmail.com");
 
-        System.out.println(users);
+        System.out.println(userDB);
 
     }
 

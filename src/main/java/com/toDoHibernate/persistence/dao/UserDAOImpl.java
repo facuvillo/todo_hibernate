@@ -1,19 +1,13 @@
 package com.toDoHibernate.persistence.dao;
 
-import com.toDoHibernate.persistence.entities.User;
 import com.toDoHibernate.persistence.util.HibernateUtil;
+import com.toDoHibernate.persistence.entities.User;
 import jakarta.persistence.PersistenceException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import java.util.List;
-
 public class UserDAOImpl implements UserDAO {
 
-    @Override
-    public User findById(Long id) {
-        return null;
-    }
 
     @Override
     public User findByEmail(String email) {
@@ -46,13 +40,4 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 
-    @Override
-    public User update(User user) {
-        return null;
-    }
-
-    @Override
-    public boolean delete(User user) {
-        return false;
-    }
 }

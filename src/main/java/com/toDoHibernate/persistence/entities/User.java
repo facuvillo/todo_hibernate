@@ -23,18 +23,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-
-
-    // TODO Agregar la busqueda por id para recuperar las colecciones
-    // @OneToMany
-    // private List<GroupList> groupsList = new ArrayList<>();
-
-    // TODO Agregar la busqueda por id para recuperar las colecciones
-    // @ManyToMany
-    // private List<ListTasks> listTasks = new ArrayList<>();
-
-    // Constructors
-
     public User() {}
 
     public User(Long id, String nickname, String mail, String password) {
@@ -46,21 +34,6 @@ public class User {
 
     // Getters y Setters
 
-//    public List<ListTasks> getListTasks() {
-//        return listTasks;
-//    }
-//
-//    public void setListTasks(List<ListTasks> listTasks) {
-//        this.listTasks = listTasks;
-//    }
-//
-//    public List<GroupList> getGroupsList() {
-//        return groupsList;
-//    }
-//
-//    public void setGroupsList(List<GroupList> groupsList) {
-//        this.groupsList = groupsList;
-//    }
 
     public Long getId() {
         return id;

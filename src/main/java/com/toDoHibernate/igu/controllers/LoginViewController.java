@@ -1,32 +1,56 @@
 package com.toDoHibernate.igu.controllers;
 
+import com.toDoHibernate.appLogic.security.PasswordService;
+import com.toDoHibernate.igu.dto.UserLoginDTO;
+import com.toDoHibernate.persistence.dao.UserDAO;
+import com.toDoHibernate.persistence.dao.UserDAOImpl;
 import com.toDoHibernate.utilities.Paths;
-import com.toDoHibernate.utilities.SwitcherView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static com.toDoHibernate.utilities.SwitcherView.switcher;
+
 public class LoginViewController {
+
+    @FXML private TextField txtEmailOrName;
+    @FXML private Label lblUserNotFound;
+    @FXML private TextField txtPassword;
+    @FXML private Label lblIncorretPassword;
+
+    private final UserDAO userDAO = new UserDAOImpl();
+
+    @FXML
+    void login(ActionEvent event) throws IOException {
+        hideLabels();
+        UserLoginDTO user = userDAO.findByEmailOrNickname(txtEmailOrName.getText());
+        if (user == null) {
+            lblUserNotFound.setText("USER NOT FOUND");
+            lblUserNotFound.setVisible(true);
+            return;
+        }
+        if (!checkPassword(user.getPassword())){
+            lblIncorretPassword.setText("INCORRECT PASSWORD");
+            lblIncorretPassword.setVisible(true);
+            return;
+        }
+        switcher(event, Paths.MAIN_VIEW);
+    }
 
     @FXML
     public void changeRegisteView(ActionEvent event) throws IOException {
-
-        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(SwitcherView.class.getResource(Paths.REGISTER.getView().getFileName()));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-        currentStage.close();
-
+        switcher(event,Paths.REGISTER);
     }
 
+    private boolean checkPassword(String password) {
+        return new PasswordService().verifyPassword(txtPassword.getText(), password);
+    }
+
+    private void hideLabels(){
+        lblUserNotFound.setVisible(false);
+        lblIncorretPassword.setVisible(false);
+    }
 }

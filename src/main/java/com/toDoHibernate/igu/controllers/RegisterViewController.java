@@ -10,10 +10,10 @@ import com.toDoHibernate.persistence.entities.User;
 import com.toDoHibernate.utilities.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -82,10 +82,7 @@ public class RegisterViewController {
                 lblPasswordConditions.setVisible(true);
                 break;
         }
-        if (condition == PassowordConditions.ALL_GOOD){
-            return true;
-        }
-        return false;
+        return condition == PassowordConditions.ALL_GOOD;
     }
 
     boolean validateNickname(String nickname){
@@ -114,7 +111,7 @@ public class RegisterViewController {
 
 
     @FXML
-    void registerUser(ActionEvent event) {
+    void registerUser(ActionEvent event) throws IOException {
         hideLabels();
 
         String email = txtEmail.getText().toLowerCase();
@@ -142,15 +139,22 @@ public class RegisterViewController {
 
         User newUser = new User(null, nickname, email, passwordService.hashPassword(password));
         userDAO.create(newUser);
+
+        switcher(event, Paths.LOGIN);
     }
 
 
 
-    private void initLables(){
+    private void hideLabels(){
         lblEmailValid.setVisible(false);
         lblLongUsername.setVisible(false);
         lblPasswordConditions.setVisible(false);
         lblConfirmPassword.setVisible(false);
 
+    }
+
+    @FXML
+    void switchLoginView(ActionEvent event) throws IOException {
+        switcher(event, Paths.LOGIN);
     }
 }

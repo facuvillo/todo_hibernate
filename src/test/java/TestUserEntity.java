@@ -1,3 +1,4 @@
+import com.toDoHibernate.igu.dto.UserLoginDTO;
 import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;
 import com.toDoHibernate.persistence.entities.User;
@@ -45,6 +46,18 @@ public class TestUserEntity{
     @Test
     void updateUser() {
         UserDAO userDAO = new UserDAOImpl();
+
+    }
+
+    @Test
+    void findByEmailOrNickname() {
+
+        UserDAO userDAO = new UserDAOImpl();
+
+        UserLoginDTO user = userDAO.findByEmailOrNickname("user1@example.com");
+
+        System.out.println(user.toString());
+
 
     }
 }

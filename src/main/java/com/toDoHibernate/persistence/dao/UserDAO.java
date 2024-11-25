@@ -1,5 +1,6 @@
 package com.toDoHibernate.persistence.dao;
 
+import com.toDoHibernate.igu.dto.UserLoginDTO;
 import com.toDoHibernate.persistence.entities.User;
 
 import java.util.List;
@@ -8,6 +9,8 @@ import java.util.List;
 public interface UserDAO {
 
     User findByEmail(String email);
+
+    UserLoginDTO findByEmailOrNickname(String emailOrUsername);
 
     User create(User user);
 

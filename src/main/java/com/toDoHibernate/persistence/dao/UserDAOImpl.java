@@ -1,9 +1,11 @@
 package com.toDoHibernate.persistence.dao;
 
+import com.toDoHibernate.igu.dto.UserLoginDTO;
 import com.toDoHibernate.persistence.util.HibernateUtil;
 import com.toDoHibernate.persistence.entities.User;
 import jakarta.persistence.PersistenceException;
 import org.hibernate.Session;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 
 public class UserDAOImpl implements UserDAO {
@@ -20,6 +22,21 @@ public class UserDAOImpl implements UserDAO {
         session.close();
 
         return user;
+    }
+
+    @Override
+    public UserLoginDTO findByEmailOrNickname(String emailOrUsername) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        NativeQuery<UserLoginDTO> query = session.createNativeQuery("select email,nickname,password from users where email = :emailOrNickname or nickname = :emailOrNickname", UserLoginDTO.class);
+        query.setParameter("emailOrNickname", emailOrUsername);
+        try{
+            UserLoginDTO userLoginDTO = query.getSingleResult();
+            session.close();
+            return userLoginDTO;
+        } catch (Exception e) {
+            session.close();
+            return null;
+        }
     }
 
     @Override

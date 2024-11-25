@@ -6,7 +6,8 @@ import com.toDoHibernate.igu.View;
 public enum Paths {
 
     LOGIN("login-view.fxml"),
-    REGISTER("register-view.fxml");
+    REGISTER("register-view.fxml"),
+    MAIN_VIEW("main-view.fxml");
 
     private final View view;
 

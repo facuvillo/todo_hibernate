@@ -111,7 +111,7 @@ public class RegisterViewController {
 
 
     @FXML
-    void registerUser(ActionEvent event) {
+    void registerUser(ActionEvent event) throws IOException {
         hideLabels();
 
         String email = txtEmail.getText().toLowerCase();
@@ -139,6 +139,8 @@ public class RegisterViewController {
 
         User newUser = new User(null, nickname, email, passwordService.hashPassword(password));
         userDAO.create(newUser);
+
+        switcher(event, Paths.LOGIN);
     }
 
 

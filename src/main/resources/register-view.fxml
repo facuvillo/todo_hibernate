@@ -102,7 +102,7 @@
                                 <Font size="14.0" />
                             </font>
                         </Label>
-                        <Hyperlink layoutX="217.0" layoutY="-1.0" prefHeight="22.0" prefWidth="45.0" text="LOGIN">
+                        <Hyperlink layoutX="217.0" layoutY="-1.0" onAction="#switchLoginView" prefHeight="22.0" prefWidth="45.0" text="LOGIN">
                             <font>
                                 <Font name="System Bold" size="11.0" />
                             </font>

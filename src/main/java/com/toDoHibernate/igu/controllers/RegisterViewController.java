@@ -7,14 +7,19 @@ import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;
 
 import com.toDoHibernate.persistence.entities.User;
+import com.toDoHibernate.utilities.Paths;
+import com.toDoHibernate.utilities.SwitcherView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.toDoHibernate.utilities.SwitcherView.switcher;
 
 public class RegisterViewController {
 
@@ -111,8 +116,8 @@ public class RegisterViewController {
 
 
     @FXML
-    void registerUser(ActionEvent event) {
-        initLables();
+    void registerUser(ActionEvent event) throws IOException {
+        hideLabels();
 
         String email = txtEmail.getText().toLowerCase();
         String nickname = txtNickname.getText();
@@ -126,22 +131,26 @@ public class RegisterViewController {
 
 
         if (validEmail && validPasswors && validNickname && validConfirmPassword){
-            System.out.println("BIENNNNNNNNNN");
-            User newUser = new User(null, nickname, email, password);
+            User newUser = new User(null, nickname, email, passwordService.hashPassword(password));
             userDAO.create(newUser);
-        }else {
-            System.out.println("MALLLLLLLLLLL");
+
+            switcher(event, Paths.LOGIN);
+
         }
+
 
     }
 
-
-
-    private void initLables(){
+    private void hideLabels(){
         lblEmailValid.setVisible(false);
         lblLongUsername.setVisible(false);
         lblPasswordConditions.setVisible(false);
         lblConfirmPassword.setVisible(false);
 
+    }
+
+    @FXML
+    void switchLoginView(ActionEvent event) throws IOException {
+        switcher(event, Paths.LOGIN);
     }
 }

@@ -7,6 +7,7 @@ import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;
 
 import com.toDoHibernate.persistence.entities.User;
+import com.toDoHibernate.utilities.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,6 +16,8 @@ import javafx.scene.control.TextField;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.toDoHibernate.utilities.SwitcherView.switcher;
 
 public class RegisterViewController {
 
@@ -112,27 +115,33 @@ public class RegisterViewController {
 
     @FXML
     void registerUser(ActionEvent event) {
-        initLables();
+        hideLabels();
 
         String email = txtEmail.getText().toLowerCase();
         String nickname = txtNickname.getText();
         String password = txtPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
 
-        boolean validEmail = validateEmail(email);
-        boolean validNickname = validateNickname(nickname);
-        boolean validPasswors = validatePassword(password);
-        boolean validConfirmPassword = validateConfirmPassword(confirmPassword, password);
+        // TODO Revisar si se puede hacer de una forma más eficiente
 
-
-        if (validEmail && validPasswors && validNickname && validConfirmPassword){
-            System.out.println("BIENNNNNNNNNN");
-            User newUser = new User(null, nickname, email, password);
-            userDAO.create(newUser);
-        }else {
-            System.out.println("MALLLLLLLLLLL");
+        if (!validateEmail(email)){
+            return;
         }
 
+        if (!validateNickname(nickname)){
+            return;
+        }
+
+        if (!validatePassword(password)){
+            return;
+        }
+
+        if (!validateConfirmPassword(confirmPassword, password)){
+            return;
+        }
+
+        User newUser = new User(null, nickname, email, passwordService.hashPassword(password));
+        userDAO.create(newUser);
     }
 
 

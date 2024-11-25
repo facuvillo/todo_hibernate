@@ -8,10 +8,8 @@ import com.toDoHibernate.persistence.dao.UserDAOImpl;
 
 import com.toDoHibernate.persistence.entities.User;
 import com.toDoHibernate.utilities.Paths;
-import com.toDoHibernate.utilities.SwitcherView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -84,10 +82,7 @@ public class RegisterViewController {
                 lblPasswordConditions.setVisible(true);
                 break;
         }
-        if (condition == PassowordConditions.ALL_GOOD){
-            return true;
-        }
-        return false;
+        return condition == PassowordConditions.ALL_GOOD;
     }
 
     boolean validateNickname(String nickname){
@@ -116,7 +111,7 @@ public class RegisterViewController {
 
 
     @FXML
-    void registerUser(ActionEvent event) throws IOException {
+    void registerUser(ActionEvent event) {
         hideLabels();
 
         String email = txtEmail.getText().toLowerCase();
@@ -124,22 +119,29 @@ public class RegisterViewController {
         String password = txtPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
 
-        boolean validEmail = validateEmail(email);
-        boolean validNickname = validateNickname(nickname);
-        boolean validPasswors = validatePassword(password);
-        boolean validConfirmPassword = validateConfirmPassword(confirmPassword, password);
+        // TODO Revisar si se puede hacer de una forma más eficiente
 
-
-        if (validEmail && validPasswors && validNickname && validConfirmPassword){
-            User newUser = new User(null, nickname, email, passwordService.hashPassword(password));
-            userDAO.create(newUser);
-
-            switcher(event, Paths.LOGIN);
-
+        if (!validateEmail(email)){
+            return;
         }
 
+        if (!validateNickname(nickname)){
+            return;
+        }
 
+        if (!validatePassword(password)){
+            return;
+        }
+
+        if (!validateConfirmPassword(confirmPassword, password)){
+            return;
+        }
+
+        User newUser = new User(null, nickname, email, passwordService.hashPassword(password));
+        userDAO.create(newUser);
     }
+
+
 
     private void hideLabels(){
         lblEmailValid.setVisible(false);

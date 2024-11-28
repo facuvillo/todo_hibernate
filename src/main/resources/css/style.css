@@ -1,0 +1,19 @@
+.text-fields {
+    -fx-border-radius: 15;
+    -fx-background-radius: 20;
+    -fx-background-color:  #2a2a2a;
+    -fx-text-fill: #FFF;
+    -fx-font-size: 14px;
+    -fx-padding: 0 0 0 15;
+}
+
+.button-login-register{
+    -fx-border-radius: 15;
+    -fx-background-radius: 20;
+    -fx-background-color: #2934AB;
+    -fx-text-fill: #FFF;
+}
+
+.text-register-login{
+    -fx-text-fill: #4d5bd9;
+}

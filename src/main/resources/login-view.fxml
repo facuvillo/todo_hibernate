@@ -41,7 +41,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtEmailOrName" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="textFields" />
+                  <TextField id="textFieldUser" fx:id="txtEmailOrName" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="text-fields" stylesheets="@css/style.css" />
                   <Label fx:id="lblUserNotFound" layoutX="13.0" layoutY="62.0" textAlignment="CENTER" textFill="#e85656" visible="false">
                      <font>
                         <Font size="14.0" />
@@ -56,7 +56,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="txtPassword" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" />
+                  <PasswordField fx:id="txtPassword" layoutY="21.0" prefHeight="42.0" prefWidth="323.0" styleClass="text-fields" />
                   <Label fx:id="lblIncorretPassword" layoutX="13.0" layoutY="62.0" textAlignment="CENTER" textFill="#e85656" visible="false">
                      <font>
                         <Font size="14.0" />
@@ -64,7 +64,10 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button id="btnLogIn" layoutX="23.0" layoutY="308.0" mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="323.0" text="LOG IN" />
+            <Button id="btnLogIn" layoutX="23.0" layoutY="308.0" mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="323.0" styleClass="button-login-register" text="LOG IN">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
             <AnchorPane layoutX="22.0" layoutY="356.0" prefHeight="21.0" prefWidth="323.0">
                <children>
                   <Label layoutX="61.0" layoutY="1.0" text="Don't have an account?" textFill="#d0d0d0">
@@ -72,9 +75,9 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Hyperlink layoutX="204.0" onAction="#changeRegisteView" prefHeight="9.0" prefWidth="61.0" text="REGISTER">
+                  <Hyperlink layoutX="204.0" onAction="#changeRegisteView" prefHeight="23.0" prefWidth="67.0" styleClass="text-register-login" text="REGISTER">
                      <font>
-                        <Font name="System Bold" size="11.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Hyperlink>
                </children>

@@ -1,5 +1,7 @@
 package com.toDoHibernate.utilities;
 
+import com.toDoHibernate.igu.controllers.MainViewController;
+import com.toDoHibernate.igu.dto.UserLoginDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -24,6 +26,17 @@ public class SwitcherView {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public static void switcher(ActionEvent event, Paths path, UserLoginDTO user) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(SwitcherView.class.getClassLoader().getResource(path.getView().getFileName())));
+        root = loader.load();
+        MainViewController controller = loader.getController();
+        controller.initialize(user);
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public static void setup(Stage stage, Scene scene) {

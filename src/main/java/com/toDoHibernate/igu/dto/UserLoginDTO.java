@@ -16,6 +16,14 @@ public class UserLoginDTO {
         return password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
     @Override
     public String toString() {
         return "UserLoginDTO{" +

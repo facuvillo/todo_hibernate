@@ -74,6 +74,11 @@
 }
 
 /* New Task Section */
+
+.labels-user{
+    -fx-alignment: center;
+}
+
 .button{
     -fx-border-radius: 0;
     -fx-background-radius: 0;

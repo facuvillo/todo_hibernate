@@ -37,7 +37,7 @@ public class LoginViewController {
             lblIncorretPassword.setVisible(true);
             return;
         }
-        switcher(event, Paths.MAIN_VIEW);
+        switcher(event, Paths.MAIN_VIEW, user);
     }
 
     @FXML

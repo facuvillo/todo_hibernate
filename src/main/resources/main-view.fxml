@@ -18,12 +18,12 @@
          <children>
             <AnchorPane prefHeight="120.0" prefWidth="320.0" styleClass="div-side-menu" stylesheets="@css/style.css">
                <children>
-                  <Label layoutX="85.0" layoutY="29.0" text="UserName" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="lblUserName" layoutX="85.0" layoutY="29.0" styleClass="labels-user" text="UserName" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Roboto" size="32.0" />
                      </font>
                   </Label>
-                  <Label layoutX="51.0" layoutY="65.0" text="mailejemplo@ejemplo.com" textAlignment="CENTER" textFill="#636363">
+                  <Label fx:id="lblUserEmail" layoutY="65.0" prefHeight="27.0" prefWidth="320.0" styleClass="labels-user" textAlignment="CENTER" textFill="#636363">
                      <font>
                         <Font size="18.0" />
                      </font>

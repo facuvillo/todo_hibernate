@@ -1,15 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.toDoHibernate.igu.controllers.MainViewController"
-            prefHeight="600.0" prefWidth="1000.0"
-            stylesheets="@css/style.css">
-
+<AnchorPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #1D1D1D;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toDoHibernate.igu.controllers.MainViewController">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="320.0" style="-fx-background-color: #272727;">
+         <children>
+            <AnchorPane prefHeight="120.0" prefWidth="320.0" styleClass="div-side-menu" stylesheets="@css/style.css">
+               <children>
+                  <Label layoutX="85.0" layoutY="29.0" text="UserName" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto" size="32.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="51.0" layoutY="65.0" text="mailejemplo@ejemplo.com" textAlignment="CENTER" textFill="#636363">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button id="btnUserAjustes" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+               </children></AnchorPane>
+            <ScrollPane layoutY="334.0" prefHeight="565.0" prefWidth="320.0" styleClass="scroll-pane-side-menu">
+               <content>
+                  <VBox prefHeight="565.0" prefWidth="320.0" />
+               </content></ScrollPane>
+            <Button layoutY="120.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="320.0" text="General">
+               <font>
+                  <Font name="Roboto" size="24.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/general-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="div-side-menu" />
+                  <String fx:value="buttons-groups" />
+               </styleClass>
+            </Button>
+            <Button layoutY="180.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="320.0" text=" Hoy">
+               <font>
+                  <Font name="Roboto" size="24.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/today-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="div-side-menu" />
+                  <String fx:value="buttons-groups" />
+               </styleClass>
+            </Button>
+            <Button layoutY="240.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="320.0" text="Importante" textAlignment="CENTER">
+               <font>
+                  <Font name="Roboto" size="24.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/important-group.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="div-side-menu" />
+                  <String fx:value="buttons-groups" />
+               </styleClass>
+            </Button>
+            <Button layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="107.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" text="Lista" textAlignment="CENTER">
+               <styleClass>
+                  <String fx:value="div-side-menu" />
+                  <String fx:value="btn-left-new-list" />
+                  <String fx:value="btn-new-group-list" />
+                  <String fx:value="buttons-groups" />
+               </styleClass>
+               <font>
+                  <Font name="Roboto" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/plus-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="160.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="107.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" text="Grupo" textAlignment="CENTER">
+               <styleClass>
+                  <String fx:value="div-side-menu" />
+                  <String fx:value="btn-new-group-list" />
+                  <String fx:value="buttons-groups" />
+               </styleClass>
+               <font>
+                  <Font name="Roboto" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/plus-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="320.0" layoutY="815.0" prefHeight="85.0" prefWidth="1280.0">
+         <children>
+            <TextField id="text-field-new-task" layoutX="15.0" layoutY="10.0" prefHeight="66.0" prefWidth="1250.0" promptText="Agregar nueva tarea">
+               <font>
+                  <Font name="Roboto" size="20.0" />
+               </font>
+               <padding>
+                  <Insets left="35.0" />
+               </padding>
+            </TextField>
+            <Button id="btnNewTask" layoutX="1212.0" layoutY="23.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="320.0" prefHeight="815.0" prefWidth="1280.0">
+         <children>
+            <AnchorPane prefHeight="70.0" prefWidth="1280.0">
+               <children>
+                  <Label layoutX="573.0" layoutY="19.0" text="Current List" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri Bold" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <ScrollPane layoutY="75.0" prefHeight="743.0" prefWidth="1280.0">
+               <content>
+                  <VBox prefHeight="743.0" prefWidth="1280.0" spacing="15.0">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

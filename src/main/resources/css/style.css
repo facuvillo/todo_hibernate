@@ -1,3 +1,12 @@
+.hyperlink:focused{
+    -fx-border-width: 0;
+}
+
+.button{
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
 .text-fields {
     -fx-border-radius: 15;
     -fx-background-radius: 20;
@@ -32,6 +41,7 @@
 
 .div-side-menu{
     -fx-border-width: 0 0 1 0;
+    -fx-border-insets: 0 0 -1 0;
     -fx-border-color: #363636;
     -fx-background-color: transparent;
     -fx-text-fill: #fff;
@@ -43,6 +53,7 @@
 
 .btn-left-new-list{
     -fx-border-width: 0 1 1 0;
+    -fx-border-insets: -1;
     -fx-border-color: #363636;
 }
 
@@ -73,16 +84,19 @@
     -fx-background-color: #363636;
 }
 
+.current-group:disabled {
+    -fx-border-width: 0 0 2 0;
+    -fx-border-insets: 0 0 1 0;
+    -fx-border-color: #4d5bd9;
+}
+
 /* New Task Section */
 
 .labels-user{
     -fx-alignment: center;
 }
 
-.button{
-    -fx-border-radius: 0;
-    -fx-background-radius: 0;
-}
+
 .button:hover{
     -fx-cursor: hand;
 }

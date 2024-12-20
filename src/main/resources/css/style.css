@@ -125,3 +125,41 @@
     -fx-text-fill: #fff;
 }
 
+/* Card Task */
+
+#btnCheckTask{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../images/check-empty.png");
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#checkBox{
+    -fx-border-width: 0 1 0 0;
+    -fx-border-color: #363636;
+}
+
+#editTaskBox{
+    -fx-border-width: 0 1 0 1;
+    -fx-border-color: #363636;
+}
+
+#btnImportantTask{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../images/important-group.png");
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#btnDeleteTask{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../images/delete-closed.png");
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+
+

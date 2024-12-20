@@ -15,7 +15,7 @@ public class User {
     private Long id;
 
     @Column(nullable = false, length = 30)
-    private String nickname;
+    private String username;
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -23,11 +23,14 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    List<GroupList> groupLists = new ArrayList<>(); // Lista de grupos del usuario
+
     public User() {}
 
     public User(Long id, String nickname, String mail, String password) {
         this.id = id;
-        this.nickname = nickname;
+        this.username = nickname;
         this.email = mail;
         this.password = password;
     }
@@ -43,20 +46,20 @@ public class User {
         this.id = id;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getMail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setMail(String mail) {
-        this.email = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -67,13 +70,22 @@ public class User {
         this.password = password;
     }
 
+    public List<GroupList> getGroupLists() {
+        return groupLists;
+    }
+
+    public void setGroupLists(List<GroupList> groupLists) {
+        this.groupLists = groupLists;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", nickname='" + nickname + '\'' +
+                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", groupLists=" + groupLists +
                 '}';
     }
 }

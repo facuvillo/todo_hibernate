@@ -4,6 +4,7 @@ import com.toDoHibernate.appLogic.security.PasswordService;
 import com.toDoHibernate.igu.dto.UserLoginDTO;
 import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;
+import com.toDoHibernate.persistence.entities.User;
 import com.toDoHibernate.utilities.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +27,7 @@ public class LoginViewController {
     @FXML
     void login(ActionEvent event) throws IOException {
         hideLabels();
-        UserLoginDTO user = userDAO.findByEmailOrNickname(txtEmailOrName.getText());
+        User user = userDAO.findByEmail(txtEmailOrName.getText());
         if (user == null) {
             lblUserNotFound.setText("USER NOT FOUND");
             lblUserNotFound.setVisible(true);
@@ -37,7 +38,7 @@ public class LoginViewController {
             lblIncorretPassword.setVisible(true);
             return;
         }
-        switcher(event, Paths.MAIN_VIEW, user);
+        switcher(event, Paths.MAIN_VIEW, userDAO.findByIdEager(user.getId()));
     }
 
     @FXML

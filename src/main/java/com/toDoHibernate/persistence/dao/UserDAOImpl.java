@@ -14,25 +14,12 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User findByEmail(String email) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-
-        Query<User> query = session.createQuery("from User where email = :email", User.class);
+        NativeQuery<User> query = session.createNativeQuery("select email,nickname,password from users where email = :email", User.class);
         query.setParameter("email", email);
-        User user = query.getSingleResult();
-
-        session.close();
-
-        return user;
-    }
-
-    @Override
-    public UserLoginDTO findByEmailOrNickname(String emailOrUsername) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        NativeQuery<UserLoginDTO> query = session.createNativeQuery("select email,nickname,password from users where email = :emailOrNickname or nickname = :emailOrNickname", UserLoginDTO.class);
-        query.setParameter("emailOrNickname", emailOrUsername);
         try{
-            UserLoginDTO userLoginDTO = query.getSingleResult();
+            User user = query.getSingleResult();
             session.close();
-            return userLoginDTO;
+            return user;
         } catch (Exception e) {
             session.close();
             return null;
@@ -57,4 +44,13 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 
+    @Override
+    public User findByIdEager(Long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<User> query = session.createQuery("select distinct e from User e join fetch e.groupLists where e.id = :id", User.class);
+        query.setParameter("id", id);
+        User  user = query.getSingleResult();
+        session.close();
+        return user;
+    }
 }

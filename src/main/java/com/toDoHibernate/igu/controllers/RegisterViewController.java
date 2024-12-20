@@ -6,6 +6,8 @@ import com.toDoHibernate.appLogic.security.PasswordService;
 import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;
 
+import com.toDoHibernate.persistence.entities.GroupList;
+import com.toDoHibernate.persistence.entities.ListTasks;
 import com.toDoHibernate.persistence.entities.User;
 import com.toDoHibernate.utilities.Paths;
 import javafx.event.ActionEvent;
@@ -138,7 +140,14 @@ public class RegisterViewController {
         }
 
         User newUser = new User(null, nickname, email, passwordService.hashPassword(password));
-        userDAO.create(newUser);
+        setGroupListInicitial(newUser);
+        try{
+            userDAO.create(newUser);
+        } catch (Exception e) {
+            System.out.println("ERROR: "+e.getMessage());
+        }
+
+        System.out.println(userDAO.findByIdEager(1L));
 
         switcher(event, Paths.LOGIN);
     }
@@ -150,11 +159,24 @@ public class RegisterViewController {
         lblLongUsername.setVisible(false);
         lblPasswordConditions.setVisible(false);
         lblConfirmPassword.setVisible(false);
-
     }
 
     @FXML
     void switchLoginView(ActionEvent event) throws IOException {
         switcher(event, Paths.LOGIN);
+    }
+
+    private void setGroupListInicitial(User user){
+
+        ListTasks generalList = new ListTasks(null,"listaGeneral",null);
+        GroupList generalGroup = new GroupList(null,"grupoGeneral",null);
+
+        GroupList generalGroup2 = new GroupList(null,"asdasde",null);
+
+        generalGroup.getListTasks().add(generalList);
+
+        user.getGroupLists().add(generalGroup);
+        user.getGroupLists().add(generalGroup2);
+
     }
 }

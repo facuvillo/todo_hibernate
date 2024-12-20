@@ -2,6 +2,7 @@ package com.toDoHibernate.utilities;
 
 import com.toDoHibernate.igu.controllers.MainViewController;
 import com.toDoHibernate.igu.dto.UserLoginDTO;
+import com.toDoHibernate.persistence.entities.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -28,7 +29,7 @@ public class SwitcherView {
 
     }
 
-    public static void switcher(ActionEvent event, Paths path, UserLoginDTO user) throws IOException {
+    public static void switcher(ActionEvent event, Paths path, User user) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(SwitcherView.class.getClassLoader().getResource(path.getView().getFileName())));
         root = loader.load();
         MainViewController controller = loader.getController();

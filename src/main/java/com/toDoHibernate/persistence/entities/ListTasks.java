@@ -2,6 +2,9 @@ package com.toDoHibernate.persistence.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // TODO Revisar las colecciones y relaciones que voy a usar
 @Entity
 @Table(name = "lists")
@@ -17,6 +20,9 @@ public class ListTasks {
 
     @Column(name = "list_description", length = 500)
     private String description;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> tasks = new ArrayList<>();
 
     public ListTasks() {}
 
@@ -48,5 +54,15 @@ public class ListTasks {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "ListTasks{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", tasks=" + tasks +
+                '}';
     }
 }

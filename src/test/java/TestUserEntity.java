@@ -4,8 +4,6 @@ import com.toDoHibernate.persistence.dao.UserDAOImpl;
 import com.toDoHibernate.persistence.entities.User;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 public class TestUserEntity{
 
     @Test
@@ -54,7 +52,7 @@ public class TestUserEntity{
 
         UserDAO userDAO = new UserDAOImpl();
 
-        UserLoginDTO user = userDAO.findByEmailOrNickname("user1@example.com");
+        User user = userDAO.findByEmail("user1@example.com");
 
         System.out.println(user.toString());
 

@@ -16,6 +16,7 @@ public class MainViewController {
 
     public void initialize(User currentUser) {
         setCurrentUser(currentUser);
+        System.out.println(currentUser.toString());
         setUserLabels();
         setListLabel("General");
         setButtonGroup(btnGeneralList);

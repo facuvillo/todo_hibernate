@@ -14,7 +14,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User findByEmail(String email) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        NativeQuery<User> query = session.createNativeQuery("select email,nickname,password from users where email = :email", User.class);
+        NativeQuery<User> query = session.createNativeQuery("select user_id,email,username,password from users where email = :email", User.class);
         query.setParameter("email", email);
         try{
             User user = query.getSingleResult();

@@ -24,7 +24,7 @@ public class User {
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    List<GroupList> groupLists = new ArrayList<>(); // Lista de grupos del usuario
+    List<ListTasks> listTasks = new ArrayList<>();
 
     public User() {}
 
@@ -36,7 +36,6 @@ public class User {
     }
 
     // Getters y Setters
-
 
     public Long getId() {
         return id;
@@ -70,12 +69,12 @@ public class User {
         this.password = password;
     }
 
-    public List<GroupList> getGroupLists() {
-        return groupLists;
+    public List<ListTasks> getListTasks() {
+        return listTasks;
     }
 
-    public void setGroupLists(List<GroupList> groupLists) {
-        this.groupLists = groupLists;
+    public void setListTasks(List<ListTasks> listTasks) {
+        this.listTasks = listTasks;
     }
 
     @Override
@@ -85,7 +84,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", groupLists=" + groupLists +
+                ", listTasks=" + listTasks +
                 '}';
     }
 }

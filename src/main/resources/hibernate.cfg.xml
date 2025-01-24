@@ -19,6 +19,6 @@
         <mapping class="com.toDoHibernate.persistence.entities.User"/>
         <mapping class="com.toDoHibernate.persistence.entities.Task"/>
         <mapping class="com.toDoHibernate.persistence.entities.ListTasks"/>
-        <mapping class="com.toDoHibernate.persistence.entities.GroupList"/>
+        <!-- <mapping class="com.toDoHibernate.persistence.entities.GroupList"/> -->
     </session-factory>
 </hibernate-configuration>

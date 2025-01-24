@@ -62,7 +62,6 @@ public class ListTasks {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", tasks=" + tasks +
                 '}';
     }
 }

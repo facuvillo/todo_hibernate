@@ -1,5 +1,6 @@
 package com.toDoHibernate.igu.controllers;
 
+import com.toDoHibernate.persistence.entities.ListTasks;
 import com.toDoHibernate.persistence.entities.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +14,7 @@ public class MainViewController {
     @FXML private Button btnGeneralList;
 
     private User currentUser;
+    private ListTasks currentListTask;
 
     public void initialize(User currentUser) {
         setCurrentUser(currentUser);
@@ -29,6 +31,10 @@ public class MainViewController {
 
     private void setCurrentUser(User user) {
         this.currentUser = user;
+    }
+
+    private void setCurrentList(ListTasks currentListTask) {
+        this.currentListTask = currentListTask;
     }
 
     private void setListLabel(String nameList){

@@ -74,4 +74,15 @@ public class Task {
     public void setImportant(Boolean important) {
         isImportant = important;
     }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", dueDate=" + dueDate +
+                ", isImportant=" + isImportant +
+                '}';
+    }
 }

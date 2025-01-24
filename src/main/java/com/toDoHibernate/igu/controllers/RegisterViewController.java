@@ -6,7 +6,6 @@ import com.toDoHibernate.appLogic.security.PasswordService;
 import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;
 
-import com.toDoHibernate.persistence.entities.GroupList;
 import com.toDoHibernate.persistence.entities.ListTasks;
 import com.toDoHibernate.persistence.entities.User;
 import com.toDoHibernate.utilities.Paths;
@@ -167,16 +166,7 @@ public class RegisterViewController {
     }
 
     private void setGroupListInicitial(User user){
-
         ListTasks generalList = new ListTasks(null,"listaGeneral",null);
-        GroupList generalGroup = new GroupList(null,"grupoGeneral",null);
-
-        GroupList generalGroup2 = new GroupList(null,"asdasde",null);
-
-        generalGroup.getListTasks().add(generalList);
-
-        user.getGroupLists().add(generalGroup);
-        user.getGroupLists().add(generalGroup2);
-
+        user.getListTasks().add(generalList);
     }
 }

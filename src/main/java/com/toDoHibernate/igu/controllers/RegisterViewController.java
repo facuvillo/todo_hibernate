@@ -139,19 +139,15 @@ public class RegisterViewController {
         }
 
         User newUser = new User(null, nickname, email, passwordService.hashPassword(password));
-        setGroupListInicitial(newUser);
+        setListsInicitial(newUser);
         try{
             userDAO.create(newUser);
         } catch (Exception e) {
             System.out.println("ERROR: "+e.getMessage());
         }
 
-        System.out.println(userDAO.findByIdEager(1L));
-
         switcher(event, Paths.LOGIN);
     }
-
-
 
     private void hideLabels(){
         lblEmailValid.setVisible(false);
@@ -165,7 +161,7 @@ public class RegisterViewController {
         switcher(event, Paths.LOGIN);
     }
 
-    private void setGroupListInicitial(User user){
+    private void setListsInicitial(User user){
         ListTasks generalList = new ListTasks(null,"listaGeneral",null);
         user.getListTasks().add(generalList);
     }

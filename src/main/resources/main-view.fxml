@@ -121,7 +121,7 @@
       </AnchorPane>
       <AnchorPane layoutX="320.0" layoutY="815.0" prefHeight="85.0" prefWidth="1280.0">
          <children>
-            <TextField id="text-field-new-task" layoutX="15.0" layoutY="10.0" prefHeight="66.0" prefWidth="1250.0" promptText="Agregar nueva tarea">
+            <TextField id="text-field-new-task" fx:id="inputNewTask" layoutX="15.0" layoutY="10.0" prefHeight="66.0" prefWidth="1250.0" promptText="Agregar nueva tarea">
                <font>
                   <Font name="Roboto" size="20.0" />
                </font>
@@ -129,7 +129,7 @@
                   <Insets left="35.0" />
                </padding>
             </TextField>
-            <Button id="btnNewTask" layoutX="1212.0" layoutY="23.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" />
+            <Button id="btnNewTask" layoutX="1212.0" layoutY="23.0" mnemonicParsing="false" onAction="#addNewTask" prefHeight="40.0" prefWidth="40.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="320.0" prefHeight="815.0" prefWidth="1280.0">
@@ -145,7 +145,7 @@
             </AnchorPane>
             <ScrollPane layoutY="75.0" prefHeight="743.0" prefWidth="1280.0">
                <content>
-                  <VBox prefHeight="743.0" prefWidth="1280.0" spacing="15.0">
+                  <VBox fx:id="vboxCardsTasks" prefHeight="743.0" prefWidth="1280.0" spacing="15.0">
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>

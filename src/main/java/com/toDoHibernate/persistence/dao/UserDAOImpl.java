@@ -1,6 +1,5 @@
 package com.toDoHibernate.persistence.dao;
 
-import com.toDoHibernate.igu.dto.UserLoginDTO;
 import com.toDoHibernate.persistence.util.HibernateUtil;
 import com.toDoHibernate.persistence.entities.User;
 import jakarta.persistence.PersistenceException;
@@ -27,6 +26,16 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public User findByIdEager(Long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<User> query = session.createQuery("select distinct e from User e join fetch e.listTasks where e.id = :id", User.class);
+        query.setParameter("id", id);
+        User  user = query.getSingleResult();
+        session.close();
+        return user;
+    }
+
+    @Override
     public User create(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -44,13 +53,4 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 
-    @Override
-    public User findByIdEager(Long id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query<User> query = session.createQuery("select distinct e from User e join fetch e.listTasks where e.id = :id", User.class);
-        query.setParameter("id", id);
-        User  user = query.getSingleResult();
-        session.close();
-        return user;
-    }
 }

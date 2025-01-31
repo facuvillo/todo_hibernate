@@ -162,7 +162,7 @@ public class RegisterViewController {
     }
 
     private void setListsInicitial(User user){
-        ListTasks generalList = new ListTasks(null,"listaGeneral",null);
+        ListTasks generalList = new ListTasks(null,"General",null);
         user.getListTasks().add(generalList);
     }
 }

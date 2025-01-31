@@ -20,8 +20,10 @@ public class GroupList {
     @Column(name = "group_description")
     private String description;
 
+    /*
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ListTasks> listTasks = new ArrayList<>();
+    */
 
     public GroupList() {}
 
@@ -55,13 +57,13 @@ public class GroupList {
         this.description = description;
     }
 
-    public List<ListTasks> getListTasks() {
-        return listTasks;
-    }
-
-    public void setListTasks(List<ListTasks> listTasks) {
-        this.listTasks = listTasks;
-    }
+//    public List<ListTasks> getListTasks() {
+//        return listTasks;
+//    }
+//
+//    public void setListTasks(List<ListTasks> listTasks) {
+//        this.listTasks = listTasks;
+//    }
 
     @Override
     public String toString() {

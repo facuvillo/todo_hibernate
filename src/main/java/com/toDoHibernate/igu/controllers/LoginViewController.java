@@ -1,7 +1,6 @@
 package com.toDoHibernate.igu.controllers;
 
 import com.toDoHibernate.appLogic.security.PasswordService;
-import com.toDoHibernate.igu.dto.UserLoginDTO;
 import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;
 import com.toDoHibernate.persistence.entities.User;
@@ -28,11 +27,13 @@ public class LoginViewController {
     void login(ActionEvent event) throws IOException {
         hideLabels();
         User user = userDAO.findByEmail(txtEmailOrName.getText());
+
         if (user == null) {
             lblUserNotFound.setText("USER NOT FOUND");
             lblUserNotFound.setVisible(true);
             return;
         }
+
         if (!checkPassword(user.getPassword())){
             lblIncorretPassword.setText("INCORRECT PASSWORD");
             lblIncorretPassword.setVisible(true);

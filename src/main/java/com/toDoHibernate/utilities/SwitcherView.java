@@ -1,7 +1,6 @@
 package com.toDoHibernate.utilities;
 
 import com.toDoHibernate.igu.controllers.MainViewController;
-import com.toDoHibernate.igu.dto.UserLoginDTO;
 import com.toDoHibernate.persistence.entities.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

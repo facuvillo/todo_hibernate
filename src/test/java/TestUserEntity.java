@@ -1,4 +1,3 @@
-import com.toDoHibernate.igu.dto.UserLoginDTO;
 import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;
 import com.toDoHibernate.persistence.entities.User;
@@ -11,7 +10,7 @@ public class TestUserEntity{
 
         UserDAO userDAO = new UserDAOImpl();
 
-        User userDB = userDAO.findByEmail("ejemplo@gmail.com");
+        User userDB = userDAO.findByEmail("facundovilloldoyegros@gmail.com");
 
         System.out.println(userDB);
 

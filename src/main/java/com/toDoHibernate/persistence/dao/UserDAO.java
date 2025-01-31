@@ -1,6 +1,5 @@
 package com.toDoHibernate.persistence.dao;
 
-import com.toDoHibernate.igu.dto.UserLoginDTO;
 import com.toDoHibernate.persistence.entities.User;
 
 // TODO Agregar el CRUD básico completo

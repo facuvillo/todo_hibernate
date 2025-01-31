@@ -1,10 +1,14 @@
 package com.toDoHibernate.igu.controllers;
 
+import com.toDoHibernate.persistence.dao.ListDAOImple;
 import com.toDoHibernate.persistence.entities.ListTasks;
+import com.toDoHibernate.persistence.entities.Task;
 import com.toDoHibernate.persistence.entities.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+
+import java.util.Date;
 
 public class MainViewController {
 
@@ -13,13 +17,15 @@ public class MainViewController {
     @FXML private Label lblListName;
     @FXML private Button btnGeneralList;
 
+    private ListDAOImple listDAO = new ListDAOImple();
     private User currentUser;
     private ListTasks currentListTask;
 
     public void initialize(User currentUser) {
         setCurrentUser(currentUser);
         setUserLabels();
-        setListLabel("General");
+        setCurrentList(listDAO.findByIdEager(currentUser.getListTasks().getFirst().getId()));
+        setListLabel(currentListTask.getTitle());
         setButtonGroup(btnGeneralList);
     }
 

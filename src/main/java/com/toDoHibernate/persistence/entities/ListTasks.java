@@ -56,6 +56,14 @@ public class ListTasks {
         this.description = description;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     @Override
     public String toString() {
         return "ListTasks{" +

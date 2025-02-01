@@ -60,11 +60,12 @@ public class MainViewController {
 
     // Add new task
     @FXML
-    private void addNewTask (){
+    private void addNewTask () throws IOException {
         String titleNewTask = this.inputNewTask.getText();
         Task newTask = new Task(null,titleNewTask,"",null,false);
         currentListTask.getTasks().add(newTask);
         listDAO.update(currentListTask);
+        addNewCardTask(newTask);
     }
 
     // Set tasks cards
@@ -79,7 +80,15 @@ public class MainViewController {
                 vboxCardsTasks.getChildren().add(pane);
             }
         }
+    }
 
+    private void addNewCardTask(Task newTask) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/card-task.fxml"));
+        Pane pane = loader.load();
+        CardTaskController cardTaskController = loader.getController();
+        cardTaskController.setLabelTitle(newTask.getTitle());
+        vboxCardsTasks.getChildren().add(pane);
+        inputNewTask.setText("");
     }
 
 }

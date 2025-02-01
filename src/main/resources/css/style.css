@@ -135,6 +135,10 @@
     -fx-background-position: center;
 }
 
+#btnCheckTask:hover{
+    -fx-background-image: url("../images/check-hover.png");
+}
+
 #checkBox{
     -fx-border-width: 0 1 0 0;
     -fx-border-color: #363636;
@@ -147,10 +151,14 @@
 
 #btnImportantTask{
     -fx-background-color: transparent;
-    -fx-background-image: url("../images/important-group.png");
+    -fx-background-image: url("../images/not-important.png");
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
+}
+
+#btnImportantTask:hover{
+    -fx-background-image: url("../images/important-group.png");
 }
 
 #btnDeleteTask{
@@ -159,6 +167,14 @@
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
+}
+
+#btnDeleteTask:hover{
+    -fx-background-image: url("../images/delete-opened.png");
+}
+
+.cardTaskLabel{
+    -fx-text-fill: #fff;
 }
 
 

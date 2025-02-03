@@ -71,6 +71,7 @@ public class MainViewController {
         taskDAO.create(newTask);
         setCurrentList(listDAO.findByIdEager(currentUser.getId()));
         addNewCardTask(titleNewTask , currentListTask.getTasks().getLast().getId());
+        inputNewTask.requestFocus();
     }
 
     // Set tasks cards

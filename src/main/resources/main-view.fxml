@@ -82,27 +82,10 @@
                   <String fx:value="buttons-groups" />
                </styleClass>
             </Button>
-            <Button layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="107.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" text="Lista" textAlignment="CENTER">
+            <Button layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="107.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="320.0" text="Lista" textAlignment="CENTER">
                <styleClass>
                   <String fx:value="div-side-menu" />
                   <String fx:value="btn-left-new-list" />
-                  <String fx:value="btn-new-group-list" />
-                  <String fx:value="buttons-groups" />
-               </styleClass>
-               <font>
-                  <Font name="Roboto" size="20.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/plus-button.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button layoutX="160.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="107.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" text="Grupo" textAlignment="CENTER">
-               <styleClass>
-                  <String fx:value="div-side-menu" />
                   <String fx:value="btn-new-group-list" />
                   <String fx:value="buttons-groups" />
                </styleClass>

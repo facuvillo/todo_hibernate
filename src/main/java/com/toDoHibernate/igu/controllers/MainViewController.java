@@ -1,6 +1,8 @@
 package com.toDoHibernate.igu.controllers;
 
 import com.toDoHibernate.persistence.dao.ListDAOImple;
+import com.toDoHibernate.persistence.dao.TaskDAO;
+import com.toDoHibernate.persistence.dao.TaskDAOImple;
 import com.toDoHibernate.persistence.entities.ListTasks;
 import com.toDoHibernate.persistence.entities.Task;
 import com.toDoHibernate.persistence.entities.User;
@@ -24,6 +26,7 @@ public class MainViewController {
     @FXML private VBox vboxCardsTasks;
 
     private final ListDAOImple listDAO = new ListDAOImple();
+    private final TaskDAOImple taskDAO = new TaskDAOImple();
     private User currentUser;
     private ListTasks currentListTask;
 
@@ -63,9 +66,11 @@ public class MainViewController {
     private void addNewTask () throws IOException {
         String titleNewTask = this.inputNewTask.getText();
         Task newTask = new Task(null,titleNewTask,"",null,false);
+        newTask.setList(currentListTask);
         currentListTask.getTasks().add(newTask);
-        listDAO.update(currentListTask);
-        addNewCardTask(newTask);
+        taskDAO.create(newTask);
+        setCurrentList(listDAO.findByIdEager(currentUser.getId()));
+        addNewCardTask(titleNewTask , currentListTask.getTasks().getLast().getId());
     }
 
     // Set tasks cards
@@ -82,11 +87,12 @@ public class MainViewController {
         }
     }
 
-    private void addNewCardTask(Task newTask) throws IOException {
+    private void addNewCardTask(String titleNewTask, Long id) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/card-task.fxml"));
         Pane pane = loader.load();
         CardTaskController cardTaskController = loader.getController();
-        cardTaskController.setLabelTitle(newTask.getTitle());
+        cardTaskController.setLabelTitle(titleNewTask);
+        cardTaskController.setTaskId(id);
         vboxCardsTasks.getChildren().add(pane);
         inputNewTask.setText("");
     }

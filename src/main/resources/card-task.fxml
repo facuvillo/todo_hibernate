@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="1250.0" style="-fx-border-radius: 20; -fx-background-radius: 10; -fx-background-color: #2D2D2D;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toDoHibernate.igu.controllers.CardTaskController">
+<AnchorPane fx:id="cardTaskPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="1250.0" style="-fx-border-radius: 20; -fx-background-radius: 10; -fx-background-color: #2D2D2D;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toDoHibernate.igu.controllers.CardTaskController">
    <children>
       <AnchorPane id="checkBox" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/style.css">
          <children>
@@ -19,7 +19,7 @@
          </children></AnchorPane>
       <AnchorPane layoutX="1186.0" prefHeight="64.0" prefWidth="64.0">
          <children>
-            <Button id="btnDeleteTask" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="38.0" />
+            <Button id="btnDeleteTask" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" onAction="#deleteTask" prefHeight="38.0" prefWidth="38.0" />
          </children></AnchorPane>
       <Label fx:id="lblTitleTask" layoutX="64.0" prefHeight="64.0" prefWidth="1058.0" styleClass="cardTaskLabel" text="Label">
          <font>

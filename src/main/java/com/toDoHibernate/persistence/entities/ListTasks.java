@@ -21,7 +21,7 @@ public class ListTasks {
     @Column(name = "list_description", length = 500)
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "list", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> tasks = new ArrayList<>();
 
     public ListTasks() {}

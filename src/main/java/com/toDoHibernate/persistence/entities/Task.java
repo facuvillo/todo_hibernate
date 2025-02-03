@@ -25,6 +25,10 @@ public class Task {
 
     private Boolean isImportant;
 
+    @ManyToOne
+    @JoinColumn(name = "list_id")
+    private ListTasks list;
+
     public Task() {}
 
     public Task(Long id, String title, String description, Date dueDate, Boolean isImportant) {
@@ -73,6 +77,14 @@ public class Task {
 
     public void setImportant(Boolean important) {
         isImportant = important;
+    }
+
+    public ListTasks getList() {
+        return list;
+    }
+
+    public void setList(ListTasks list) {
+        this.list = list;
     }
 
     @Override

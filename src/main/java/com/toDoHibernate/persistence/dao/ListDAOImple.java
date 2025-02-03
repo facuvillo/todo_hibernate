@@ -6,7 +6,6 @@ import jakarta.persistence.PersistenceException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListDAOImple implements ListDAO {
@@ -14,16 +13,19 @@ public class ListDAOImple implements ListDAO {
     @Override
     public ListTasks findByIdEager(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Query<ListTasks> query = session.createQuery("select distinct e from ListTasks e join fetch e.tasks where e.id = :id", ListTasks.class);
-        query.setParameter("id", id);
-        List<ListTasks> listTasks = query.getResultList();
-        if (listTasks.isEmpty()){
-            ListTasks result = findById(id);
-            result.setTasks(new ArrayList<>());
+        try {
+            // Usar LEFT JOIN FETCH para cargar tareas incluso si no existen
+            Query<ListTasks> query = session.createQuery(
+                    "SELECT DISTINCT e FROM ListTasks e LEFT JOIN FETCH e.tasks WHERE e.id = :id",
+                    ListTasks.class
+            );
+            query.setParameter("id", id);
+            List<ListTasks> listTasks = query.getResultList();
+
+            return listTasks.isEmpty() ? null : listTasks.get(0);
+        } finally {
             session.close();
-            return result;
         }
-        return listTasks.get(0);
     }
 
     @Override

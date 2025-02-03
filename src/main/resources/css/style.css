@@ -57,15 +57,29 @@
     -fx-border-color: #363636;
 }
 
+/* Scroll Pane Styles */
 .scroll-pane {
     -fx-background-color: transparent;
     -fx-background-insets: 0;
     -fx-padding: 0;
 }
 
+.scroll-pane .scroll-bar{
+    -fx-opacity: 0;
+    -fx-padding: 0;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: transparent;
+}
+
 .scroll-pane .viewport {
     -fx-background-color: transparent;
 }
+
+/**/
 
 #btnUserAjustes{
     -fx-background-color: transparent;

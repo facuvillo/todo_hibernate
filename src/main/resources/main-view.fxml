@@ -104,7 +104,7 @@
       </AnchorPane>
       <AnchorPane layoutX="320.0" layoutY="815.0" prefHeight="85.0" prefWidth="1280.0">
          <children>
-            <TextField id="text-field-new-task" fx:id="inputNewTask" layoutX="15.0" layoutY="10.0" prefHeight="66.0" prefWidth="1250.0" promptText="Agregar nueva tarea">
+            <TextField id="text-field-new-task" fx:id="inputNewTask" layoutX="15.0" layoutY="10.0" onAction="#addNewTask" prefHeight="66.0" prefWidth="1250.0" promptText="Agregar nueva tarea">
                <font>
                   <Font name="Roboto" size="20.0" />
                </font>

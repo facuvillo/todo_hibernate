@@ -65,13 +65,15 @@ public class MainViewController {
     @FXML
     private void addNewTask () throws IOException {
         String titleNewTask = this.inputNewTask.getText();
-        Task newTask = new Task(null,titleNewTask,"",null,false);
-        newTask.setList(currentListTask);
-        currentListTask.getTasks().add(newTask);
-        taskDAO.create(newTask);
-        setCurrentList(listDAO.findByIdEager(currentUser.getId()));
-        addNewCardTask(titleNewTask , currentListTask.getTasks().getLast().getId());
-        inputNewTask.requestFocus();
+        if(!titleNewTask.isEmpty()){
+            Task newTask = new Task(null,titleNewTask,"",null,false);
+            newTask.setList(currentListTask);
+            currentListTask.getTasks().add(newTask);
+            taskDAO.create(newTask);
+            setCurrentList(listDAO.findByIdEager(currentUser.getId()));
+            addNewCardTask(titleNewTask , currentListTask.getTasks().getLast().getId());
+            inputNewTask.requestFocus();
+        }
     }
 
     // Set tasks cards
@@ -83,6 +85,7 @@ public class MainViewController {
                 Pane pane = loader.load();
                 CardTaskController cardTaskController = loader.getController();
                 cardTaskController.setLabelTitle(task.getTitle());
+                cardTaskController.setTaskId(task.getId());
                 vboxCardsTasks.getChildren().add(pane);
             }
         }

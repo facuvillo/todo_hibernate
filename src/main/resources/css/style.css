@@ -8,11 +8,11 @@
 }
 
 .text-fields {
-    -fx-border-radius: 15;
-    -fx-background-radius: 20;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
     -fx-background-color:  #2a2a2a;
     -fx-text-fill: #FFF;
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-padding: 0 0 0 15;
 }
 
@@ -32,6 +32,10 @@
 
 .text-register-login{
     -fx-text-fill: #4d5bd9;
+}
+
+#title-lbl{
+    -fx-text-fill: #666;
 }
 
 

@@ -94,7 +94,7 @@
                   <PasswordField fx:id="txtConfirmPassword" layoutY="25.0" onAction="#registerUser" prefHeight="50.0" prefWidth="440.0" styleClass="text-fields" />
                </children>
             </AnchorPane>
-                <Button id="btnLogIn" fx:id="btnRegister" layoutX="30.0" layoutY="590.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="55.0" prefWidth="440.0" styleClass="button-login-register" text="REGISTER ACCOUNT">
+                <Button id="btnLogIn" fx:id="btnRegister" layoutX="30.0" layoutY="595.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="50.0" prefWidth="440.0" styleClass="button-login-register" text="REGISTER ACCOUNT">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Button>

@@ -1,12 +1,10 @@
 package com.toDoHibernate.igu.controllers;
 
 import com.toDoHibernate.persistence.dao.ListDAOImple;
-import com.toDoHibernate.persistence.dao.TaskDAO;
 import com.toDoHibernate.persistence.dao.TaskDAOImple;
 import com.toDoHibernate.persistence.entities.ListTasks;
 import com.toDoHibernate.persistence.entities.Task;
 import com.toDoHibernate.persistence.entities.User;
-import com.toDoHibernate.utilities.Paths;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -23,6 +21,7 @@ public class MainViewController {
     @FXML private Label lblUserName;
     @FXML private Label lblListName;
     @FXML private Button btnGeneralList;
+    @FXML private Button btnImportantListTasks;
     @FXML private TextField inputNewTask;
     @FXML private VBox vboxCardsTasks;
 
@@ -37,7 +36,7 @@ public class MainViewController {
         setCurrentList(listDAO.findByIdEager(currentUser.getListTasks().getFirst().getId()));
         setCardsTasks();
         setListLabel(currentListTask.getTitle());
-        setButtonGroup(btnGeneralList);
+        //setButtonGroup(btnGeneralList);
     }
 
     private void setUserLabels(){
@@ -57,10 +56,10 @@ public class MainViewController {
         lblListName.setText(nameList);
     }
 
-    private void setButtonGroup(Button buttonGroup){
-        buttonGroup.setDisable(true);
-        buttonGroup.getStyleClass().add("current-group");
-    }
+//    private void setButtonGroup(Button buttonGroup){
+//        buttonGroup.setDisable(true);
+//        buttonGroup.getStyleClass().add("current-group");
+//    }
 
     @FXML
     private void addNewTask () throws IOException {
@@ -96,5 +95,36 @@ public class MainViewController {
         cardTaskController.initialize(task.getTitle(),task);
         vboxCardsTasks.getChildren().add(pane);
         inputNewTask.setText("");
+    }
+
+    // Change to general list
+    @FXML
+    private void changeGeneralListTasks() throws IOException {
+        if (this.currentListTask.getTitle().equals("General")){
+            return;
+        }
+        if (!vboxCardsTasks.getChildren().isEmpty()){
+            vboxCardsTasks.getChildren().clear();
+        }
+        setCurrentList(listDAO.findByIdEager(currentUser.getListTasks().getFirst().getId()));
+        setCardsTasks();
+        setListLabel(currentListTask.getTitle());
+    }
+
+
+    // Change to Important List
+    @FXML
+    private void changeImportantList() throws IOException {
+        if (this.currentListTask.getTitle().equals("Importante")){
+            return;
+        }
+        if (!vboxCardsTasks.getChildren().isEmpty()){
+            vboxCardsTasks.getChildren().clear();
+        }
+        this.currentListTask = new ListTasks("Importante");
+        this.currentListTask.setTasks(listDAO.findByImportance(true));
+        setCardsTasks();
+        setListLabel(this.currentListTask.getTitle());
+        //setButtonGroup(btnImportantListTasks);
     }
 }

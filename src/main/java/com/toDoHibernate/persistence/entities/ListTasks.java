@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO Revisar las colecciones y relaciones que voy a usar
 @Entity
 @Table(name = "lists")
 public class ListTasks {
@@ -18,18 +17,14 @@ public class ListTasks {
     @Column(name = "list_title", nullable = false, length = 50)
     private String title;
 
-    @Column(name = "list_description", length = 500)
-    private String description;
-
     @OneToMany(mappedBy = "list", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> tasks = new ArrayList<>();
 
     public ListTasks() {}
 
-    public ListTasks(Long id, String title, String description) {
-        this.id = id;
+    public ListTasks(String title) {
+        this.id = null;
         this.title = title;
-        this.description = description;
     }
 
     public Long getId() {
@@ -48,14 +43,6 @@ public class ListTasks {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public List<Task> getTasks() {
         return tasks;
     }
@@ -69,7 +56,7 @@ public class ListTasks {
         return "ListTasks{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
+                ", tasks=" + tasks +
                 '}';
     }
 }

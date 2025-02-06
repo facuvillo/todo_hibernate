@@ -120,8 +120,6 @@ public class RegisterViewController {
         String password = txtPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
 
-        // TODO Revisar si se puede hacer de una forma más eficiente
-
         if (!validateEmail(email)){
             return;
         }
@@ -162,7 +160,7 @@ public class RegisterViewController {
     }
 
     private void setListsInicitial(User user){
-        ListTasks generalList = new ListTasks(null,"General",null);
+        ListTasks generalList = new ListTasks("General");
         user.getListTasks().add(generalList);
     }
 }

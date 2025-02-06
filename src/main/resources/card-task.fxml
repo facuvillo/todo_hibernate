@@ -19,7 +19,7 @@
       </AnchorPane>
       <AnchorPane id="editTaskBox" layoutX="1122.0" prefHeight="64.0" prefWidth="64.0">
          <children>
-            <Button id="btnImportantTask" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="38.0" />
+            <Button id="btnImportantTask" fx:id="btnImportantTask" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" onAction="#markImportantTask" prefHeight="38.0" prefWidth="38.0" styleClass="btnUnimportantTaskIcon" />
          </children></AnchorPane>
       <AnchorPane layoutX="1186.0" prefHeight="64.0" prefWidth="64.0">
          <children>

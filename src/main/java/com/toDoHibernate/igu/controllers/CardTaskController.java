@@ -16,6 +16,7 @@ public class CardTaskController {
     @FXML private Label lblTitleTask;
     @FXML private Label lblCompletedTaskLine;
     @FXML private Button btnCompleteTask;
+    @FXML private Button btnImportantTask;
     private final TaskDAO taskDAO = new TaskDAOImple();
     private Task task;
 
@@ -26,6 +27,11 @@ public class CardTaskController {
             applyIncompleteTaskStyles();
         }else{
             applyCompleteTaskStyles();
+        }
+        if (!this.task.getImportant()){
+            setUnimportantTaskIcon();
+        }else{
+            setImportantTaskIcon();
         }
     }
 
@@ -57,6 +63,18 @@ public class CardTaskController {
         taskDAO.update(this.task);
     }
 
+    @FXML
+    private void markImportantTask(){
+        if (!this.task.getImportant()){
+            this.task.setImportant(true);
+            setImportantTaskIcon();
+        }else{
+            this.task.setImportant(false);
+            setUnimportantTaskIcon();
+        }
+        taskDAO.update(this.task);
+    }
+
     private void applyCompleteTaskStyles(){
         lblCompletedTaskLine.setPrefWidth(lblTitleTask.getWidth());
         lblCompletedTaskLine.setVisible(true);
@@ -71,5 +89,15 @@ public class CardTaskController {
         btnCompleteTask.getStyleClass().remove("buttonCompletedIcon");
         btnCompleteTask.getStyleClass().add("btnCheckTaskIcon");
 
+    }
+
+    private void setImportantTaskIcon(){
+        btnImportantTask.getStyleClass().remove("btnUnimportantTaskIcon");
+        btnImportantTask.getStyleClass().add("btnImportanTaskIcon");
+    }
+
+    private void setUnimportantTaskIcon(){
+        btnImportantTask.getStyleClass().remove("btnImportanTaskIcon");
+        btnImportantTask.getStyleClass().add("btnUnimportantTaskIcon");
     }
 }

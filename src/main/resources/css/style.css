@@ -168,13 +168,16 @@
 
 #btnImportantTask{
     -fx-background-color: transparent;
-    -fx-background-image: url("../images/not-important.png");
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
 
-#btnImportantTask:hover{
+.btnUnimportantTaskIcon{
+    -fx-background-image: url("../images/not-important.png");
+}
+
+.btnUnimportantTaskIcon:hover{
     -fx-background-image: url("../images/important-group.png");
 }
 
@@ -208,5 +211,10 @@
     -fx-background-image: url("../images/check-did.png");
 }
 
+/* important Task */
+
+.btnImportanTaskIcon{
+    -fx-background-image: url("../images/task-important.png");
+}
 
 

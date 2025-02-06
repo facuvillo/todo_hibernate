@@ -26,18 +26,22 @@ public class Task {
     @Column(name = "is_important")
     private Boolean isImportant;
 
+    @Column(name = "is_completed")
+    private Boolean isCompleted;
+
     @ManyToOne
     @JoinColumn(name = "list_id")
     private ListTasks list;
 
     public Task() {}
 
-    public Task(Long id, String title, String description, Date dueDate, Boolean isImportant) {
-        this.id = id;
+    public Task(String title, Date dueDate) {
+        this.id = null;
         this.title = title;
-        this.description = description;
+        this.description = "";
         this.dueDate = dueDate;
-        this.isImportant = isImportant;
+        this.isImportant = false;
+        this.isCompleted = false;
     }
 
     public Long getId() {
@@ -78,6 +82,14 @@ public class Task {
 
     public void setImportant(Boolean important) {
         isImportant = important;
+    }
+
+    public Boolean getCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(Boolean completed) {
+        isCompleted = completed;
     }
 
     public ListTasks getList() {

@@ -6,6 +6,7 @@ import com.toDoHibernate.persistence.dao.TaskDAOImple;
 import com.toDoHibernate.persistence.entities.ListTasks;
 import com.toDoHibernate.persistence.entities.Task;
 import com.toDoHibernate.persistence.entities.User;
+import com.toDoHibernate.utilities.Paths;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -65,12 +66,12 @@ public class MainViewController {
     private void addNewTask () throws IOException {
         String titleNewTask = this.inputNewTask.getText();
         if(!titleNewTask.isEmpty()){
-            Task newTask = new Task(null,titleNewTask,"",null,false);
+            Task newTask = new Task(titleNewTask,null);
             newTask.setList(currentListTask);
             currentListTask.getTasks().add(newTask);
             taskDAO.create(newTask);
             setCurrentList(listDAO.findByIdEager(currentUser.getId()));
-            addNewCardTask(titleNewTask , currentListTask.getTasks().getLast().getId());
+            addNewCardTask(newTask);
             inputNewTask.requestFocus();
         }
     }
@@ -83,18 +84,18 @@ public class MainViewController {
                 Pane pane = loader.load();
                 CardTaskController cardTaskController = loader.getController();
                 cardTaskController.setLabelTitle(task.getTitle());
-                cardTaskController.setTaskId(task.getId());
+                cardTaskController.setTask(task);
                 vboxCardsTasks.getChildren().add(pane);
             }
         }
     }
 
-    private void addNewCardTask(String titleNewTask, Long id) throws IOException {
+    private void addNewCardTask(Task task) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/card-task.fxml"));
         Pane pane = loader.load();
         CardTaskController cardTaskController = loader.getController();
-        cardTaskController.setLabelTitle(titleNewTask);
-        cardTaskController.setTaskId(id);
+        cardTaskController.setLabelTitle(task.getTitle());
+        cardTaskController.setTask(task);
         vboxCardsTasks.getChildren().add(pane);
         inputNewTask.setText("");
     }

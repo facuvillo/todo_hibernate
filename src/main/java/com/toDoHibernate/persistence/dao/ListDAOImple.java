@@ -42,9 +42,7 @@ public class ListDAOImple implements ListDAO {
 
     @Override
     public ListTasks update(ListTasks listTasks) {
-        // 1
         Session session = HibernateUtil.getSessionFactory().openSession();
-        // 2
         try{
             session.beginTransaction();
             session.merge(listTasks);
@@ -53,9 +51,7 @@ public class ListDAOImple implements ListDAO {
             System.out.println("Error: "+e.getMessage());
             session.getTransaction().rollback();
         }
-        // 3
         session.close();
-        // 4
         return listTasks;
     }
 }

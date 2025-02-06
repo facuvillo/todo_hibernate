@@ -11,4 +11,6 @@ public interface TaskDAO {
 
     Boolean taskDelete(Long id);
 
+    Task update(Task task);
+
 }

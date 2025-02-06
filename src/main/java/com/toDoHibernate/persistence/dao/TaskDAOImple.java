@@ -62,4 +62,18 @@ public class TaskDAOImple implements TaskDAO {
         return true;
     }
 
+    @Override
+    public Task update(Task task) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try{
+            session.beginTransaction();
+            session.merge(task);
+            session.getTransaction().commit();
+        }catch(PersistenceException e){
+            System.out.println("Error: "+e.getMessage());
+            session.getTransaction().rollback();
+        }
+        session.close();
+        return task;
+    }
 }

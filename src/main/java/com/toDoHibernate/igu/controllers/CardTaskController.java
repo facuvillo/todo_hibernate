@@ -19,11 +19,21 @@ public class CardTaskController {
     private final TaskDAO taskDAO = new TaskDAOImple();
     private Task task;
 
-    public void setLabelTitle(String title) {
+    public void initialize(String title, Task task) {
+        setTask(task);
+        setLabelTitle(title);
+        if (!this.task.getCompleted()){
+            applyIncompleteTaskStyles();
+        }else{
+            applyCompleteTaskStyles();
+        }
+    }
+
+    private void setLabelTitle(String title) {
         lblTitleTask.setText(title);
     }
 
-    public void setTask(Task task) {
+    private void setTask(Task task) {
         this.task = task;
     }
 
@@ -41,7 +51,7 @@ public class CardTaskController {
             applyCompleteTaskStyles();
             this.task.setCompleted(true);
         }else{
-            removeCompleteTaskStyles();
+            applyIncompleteTaskStyles();
             this.task.setCompleted(false);
         }
         taskDAO.update(this.task);
@@ -55,7 +65,7 @@ public class CardTaskController {
         btnCompleteTask.getStyleClass().add("buttonCompletedIcon");
     }
 
-    private void removeCompleteTaskStyles(){
+    private void applyIncompleteTaskStyles(){
         lblCompletedTaskLine.setVisible(false);
         lblTitleTask.getStyleClass().remove("cardTaskLabelCompleted");
         btnCompleteTask.getStyleClass().remove("buttonCompletedIcon");

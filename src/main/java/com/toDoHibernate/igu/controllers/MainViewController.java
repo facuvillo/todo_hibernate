@@ -83,8 +83,7 @@ public class MainViewController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/card-task.fxml"));
                 Pane pane = loader.load();
                 CardTaskController cardTaskController = loader.getController();
-                cardTaskController.setLabelTitle(task.getTitle());
-                cardTaskController.setTask(task);
+                cardTaskController.initialize(task.getTitle(),task);
                 vboxCardsTasks.getChildren().add(pane);
             }
         }
@@ -94,10 +93,8 @@ public class MainViewController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/card-task.fxml"));
         Pane pane = loader.load();
         CardTaskController cardTaskController = loader.getController();
-        cardTaskController.setLabelTitle(task.getTitle());
-        cardTaskController.setTask(task);
+        cardTaskController.initialize(task.getTitle(),task);
         vboxCardsTasks.getChildren().add(pane);
         inputNewTask.setText("");
     }
-
 }

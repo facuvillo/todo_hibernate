@@ -141,15 +141,18 @@
 
 /* Card Task */
 
-#btnCheckTask{
+.btnCheckTask{
     -fx-background-color: transparent;
-    -fx-background-image: url("../images/check-empty.png");
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
 
-#btnCheckTask:hover{
+.btnCheckTaskIcon{
+    -fx-background-image: url("../images/check-empty.png");
+}
+
+.btnCheckTaskIcon:hover{
     -fx-background-image: url("../images/check-hover.png");
 }
 
@@ -189,6 +192,20 @@
 
 .cardTaskLabel{
     -fx-text-fill: #fff;
+}
+
+/* Task completed Styles */
+.taskCompletedLine{
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: #737373;
+}
+
+.cardTaskLabelCompleted{
+    -fx-text-fill: #737373;
+}
+
+.buttonCompletedIcon{
+    -fx-background-image: url("../images/check-did.png");
 }
 
 

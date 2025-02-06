@@ -61,7 +61,6 @@ public class MainViewController {
         buttonGroup.getStyleClass().add("current-group");
     }
 
-    // Add new task
     @FXML
     private void addNewTask () throws IOException {
         String titleNewTask = this.inputNewTask.getText();
@@ -76,7 +75,6 @@ public class MainViewController {
         }
     }
 
-    // Set tasks cards
     private void setCardsTasks() throws IOException {
 
         if (!currentListTask.getTasks().isEmpty()){

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,7 +10,11 @@
    <children>
       <AnchorPane id="checkBox" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/style.css">
          <children>
-            <Button id="btnCheckTask" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="38.0" stylesheets="@css/style.css" />
+            <Button fx:id="btnCompleteTask" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" onAction="#completeTask" prefHeight="38.0" prefWidth="38.0" stylesheets="@css/style.css">
+               <styleClass>
+                  <String fx:value="btnCheckTask" />
+                  <String fx:value="btnCheckTaskIcon" />
+               </styleClass></Button>
          </children>
       </AnchorPane>
       <AnchorPane id="editTaskBox" layoutX="1122.0" prefHeight="64.0" prefWidth="64.0">
@@ -21,12 +25,15 @@
          <children>
             <Button id="btnDeleteTask" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" onAction="#deleteTask" prefHeight="38.0" prefWidth="38.0" />
          </children></AnchorPane>
-      <Label fx:id="lblTitleTask" layoutX="64.0" prefHeight="64.0" prefWidth="1058.0" styleClass="cardTaskLabel" text="Label">
-         <font>
-            <Font name="Roboto" size="20.0" />
-         </font>
-         <padding>
-            <Insets left="35.0" />
-         </padding></Label>
+      <AnchorPane layoutX="64.0" prefHeight="64.0" prefWidth="1058.0">
+         <children>
+            <Label fx:id="lblTitleTask" layoutX="35.0" maxWidth="1023.0" prefHeight="64.0" styleClass="cardTaskLabel">
+               <font>
+                  <Font name="Roboto" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCompletedTaskLine" layoutX="35.0" layoutY="34.0" maxHeight="0.0" maxWidth="1023.0" minHeight="1.0" prefHeight="1.0" prefWidth="1.0" styleClass="taskCompletedLine" visible="false" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

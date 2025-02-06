@@ -14,7 +14,7 @@ public class Task {
     @Column(name = "task_id")
     private Long id;
 
-    @Column(name = "task_list", nullable = false, length = 100)
+    @Column(name = "task_title", nullable = false, length = 100)
     private String title;
 
     @Column(name = "task_description", length = 500)
@@ -23,6 +23,7 @@ public class Task {
     @Column(name = "due_date")
     private Date dueDate;
 
+    @Column(name = "is_important")
     private Boolean isImportant;
 
     @ManyToOne

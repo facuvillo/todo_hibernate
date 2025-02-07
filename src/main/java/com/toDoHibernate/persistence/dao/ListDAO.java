@@ -16,4 +16,8 @@ public interface ListDAO {
 
     List<Task> findByImportance(Boolean isImportant);
 
+    ListTasks create(ListTasks listTasks);
+
+    boolean delete(Long id);
+
 }

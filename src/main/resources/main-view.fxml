@@ -32,7 +32,7 @@
                </children></AnchorPane>
             <ScrollPane layoutY="334.0" prefHeight="565.0" prefWidth="320.0" styleClass="scroll-pane-side-menu">
                <content>
-                  <VBox prefHeight="565.0" prefWidth="320.0" />
+                  <VBox fx:id="vboxNewList" prefHeight="565.0" prefWidth="320.0" />
                </content></ScrollPane>
             <Button fx:id="btnGeneralList" layoutY="120.0" mnemonicParsing="false" onAction="#changeGeneralListTasks" prefHeight="60.0" prefWidth="320.0" text="General">
                <font>
@@ -82,7 +82,7 @@
                   <String fx:value="buttons-groups" />
                </styleClass>
             </Button>
-            <Button layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="107.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="320.0" text="Lista" textAlignment="CENTER">
+            <Button layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="107.0" mnemonicParsing="false" onAction="#addNewListTasks" prefHeight="35.0" prefWidth="320.0" text="Lista" textAlignment="CENTER">
                <styleClass>
                   <String fx:value="div-side-menu" />
                   <String fx:value="btn-left-new-list" />

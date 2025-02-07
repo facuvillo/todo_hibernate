@@ -217,4 +217,26 @@
     -fx-background-image: url("../images/task-important.png");
 }
 
+/* New list */
+.newListContainer{
+    -fx-background-color: transparent;
+}
+
+#btnDeleteList{
+    -fx-background-color: transparent;
+    -fx-background-image: url("../images/delete-closed.png");
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#btnDeleteList:hover{
+    -fx-background-image: url("../images/delete-opened.png");
+}
+
+.newListTextField{
+    -fx-background-color: transparent;
+    -fx-text-fill: #fff;
+}
+
 

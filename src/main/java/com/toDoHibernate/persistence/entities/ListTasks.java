@@ -56,7 +56,6 @@ public class ListTasks {
         return "ListTasks{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", tasks=" + tasks +
                 '}';
     }
 }

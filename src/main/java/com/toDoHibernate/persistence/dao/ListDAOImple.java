@@ -61,4 +61,41 @@ public class ListDAOImple implements ListDAO {
         session.close();
         return importantTasks;
     }
+
+    @Override
+    public ListTasks create(ListTasks listTasks) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try{
+            session.beginTransaction();
+            session.persist(listTasks);
+            session.getTransaction().commit();
+        }catch(PersistenceException e){
+            System.out.println("Error: "+e.getMessage());
+            session.getTransaction().rollback();
+        }
+        session.close();
+        return listTasks;
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        // 1
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        // 2
+        try{
+            session.beginTransaction();
+            ListTasks listTasks = this.findById(id);
+            session.remove(listTasks);
+            session.getTransaction().commit();
+        }catch(PersistenceException e){
+            System.out.println("Error: "+e.getMessage());
+            session.getTransaction().rollback();
+            return false;
+        }finally {
+            // 3
+            session.close();
+        }
+        // 4
+        return true;
+    }
 }

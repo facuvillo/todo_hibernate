@@ -53,4 +53,22 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 
+    @Override
+    public User update(User user) {
+        // 1
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        // 2
+        try{
+            session.beginTransaction();
+            session.merge(user);
+            session.getTransaction().commit();
+        }catch(PersistenceException e){
+            System.out.println("Error: "+e.getMessage());
+            session.getTransaction().rollback();
+        }
+        // 3
+        session.close();
+        // 4
+        return user;
+    }
 }

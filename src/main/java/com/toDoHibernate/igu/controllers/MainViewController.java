@@ -2,9 +2,12 @@ package com.toDoHibernate.igu.controllers;
 
 import com.toDoHibernate.persistence.dao.ListDAOImple;
 import com.toDoHibernate.persistence.dao.TaskDAOImple;
+import com.toDoHibernate.persistence.dao.UserDAO;
+import com.toDoHibernate.persistence.dao.UserDAOImpl;
 import com.toDoHibernate.persistence.entities.ListTasks;
 import com.toDoHibernate.persistence.entities.Task;
 import com.toDoHibernate.persistence.entities.User;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -24,9 +27,11 @@ public class MainViewController {
     @FXML private Button btnImportantListTasks;
     @FXML private TextField inputNewTask;
     @FXML private VBox vboxCardsTasks;
+    @FXML private VBox vboxNewList;
 
     private final ListDAOImple listDAO = new ListDAOImple();
     private final TaskDAOImple taskDAO = new TaskDAOImple();
+    private final UserDAOImpl userDAO = new UserDAOImpl();
     private User currentUser;
     private ListTasks currentListTask;
 
@@ -36,6 +41,7 @@ public class MainViewController {
         setCurrentList(listDAO.findByIdEager(currentUser.getListTasks().getFirst().getId()));
         setCardsTasks();
         setListLabel(currentListTask.getTitle());
+        initialSetNewLists();
         //setButtonGroup(btnGeneralList);
     }
 
@@ -111,7 +117,6 @@ public class MainViewController {
         setListLabel(currentListTask.getTitle());
     }
 
-
     // Change to Important List
     @FXML
     private void changeImportantList() throws IOException {
@@ -126,5 +131,42 @@ public class MainViewController {
         setCardsTasks();
         setListLabel(this.currentListTask.getTitle());
         //setButtonGroup(btnImportantListTasks);
+    }
+
+    private void updateCurrentUser(){
+        this.currentUser = userDAO.findByIdEager(currentUser.getId());
+    }
+
+    // Add new list
+    private void initialSetNewLists() throws IOException {
+        if (!this.currentUser.getListTasks().isEmpty()){
+            for (ListTasks listTasks : this.currentUser.getListTasks()){
+                if (!listTasks.getTitle().equals("General")){
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/list-card.fxml"));
+                    Pane pane = loader.load();
+                    NewListCard NewListCard = loader.getController();
+                    NewListCard.initialize(this.currentUser.getListTasks().getLast());
+                    vboxNewList.getChildren().add(pane);
+                }
+            }
+        }
+    }
+
+    private void createNewList(){
+        ListTasks newListTasks = new ListTasks("New List");
+        this.currentUser.getListTasks().add(newListTasks);
+        userDAO.update(this.currentUser);
+        updateCurrentUser();
+    }
+
+    @FXML
+    private void addNewListTasks() throws IOException {
+        createNewList();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/list-card.fxml"));
+        Pane pane = loader.load();
+        NewListCard newListCard = loader.getController();
+        newListCard.initialize(this.currentUser.getListTasks().getLast());
+        Platform.runLater(() -> newListCard.txtListTitle.requestFocus());
+        vboxNewList.getChildren().add(pane);
     }
 }

@@ -31,6 +31,10 @@ public class NewListCard {
         this.listTasks = listTasks;
     }
 
+    public ListTasks getListTasks() {
+        return listTasks;
+    }
+
     private void setTextListTitle(String titleList) {
         this.txtListTitle.setPromptText(titleList);
     }
@@ -48,7 +52,7 @@ public class NewListCard {
     }
 
     @FXML
-    private void deleteListTask(){
+    private void deleteListTask() {
         listDAO.delete(this.listTasks.getId());
         if (cardListPane.getParent() instanceof VBox vbox) {
             vbox.getChildren().remove(cardListPane);

@@ -83,6 +83,9 @@ public class MainViewController {
 
     private void setCardsTasks() throws IOException {
 
+        if (!vboxCardsTasks.getChildren().isEmpty()){
+            vboxCardsTasks.getChildren().clear();
+        }
         if (!currentListTask.getTasks().isEmpty()){
             for (Task task : currentListTask.getTasks()){
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/card-task.fxml"));
@@ -91,6 +94,7 @@ public class MainViewController {
                 cardTaskController.initialize(task.getTitle(),task);
                 vboxCardsTasks.getChildren().add(pane);
             }
+
         }
     }
 
@@ -167,6 +171,19 @@ public class MainViewController {
         NewListCard newListCard = loader.getController();
         newListCard.initialize(this.currentUser.getListTasks().getLast());
         Platform.runLater(() -> newListCard.txtListTitle.requestFocus());
+        newListCard.txtListTitle.setOnMouseClicked(event -> {
+            try {
+                changeList(newListCard.getListTasks());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         vboxNewList.getChildren().add(pane);
+    }
+
+    public void changeList(ListTasks listTasks) throws IOException {
+        setCurrentList(listTasks);
+        setListLabel(this.currentListTask.getTitle());
+        setCardsTasks();
     }
 }

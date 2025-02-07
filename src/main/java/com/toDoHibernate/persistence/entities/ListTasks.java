@@ -17,7 +17,7 @@ public class ListTasks {
     @Column(name = "list_title", nullable = false, length = 50)
     private String title;
 
-    @OneToMany(mappedBy = "list", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "list", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Task> tasks = new ArrayList<>();
 
     public ListTasks() {}

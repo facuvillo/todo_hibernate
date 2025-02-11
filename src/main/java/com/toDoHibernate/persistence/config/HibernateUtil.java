@@ -1,4 +1,4 @@
-package com.toDoHibernate.persistence.util;
+package com.toDoHibernate.persistence.config;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;

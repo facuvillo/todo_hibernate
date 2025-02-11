@@ -1,4 +1,4 @@
-package com.toDoHibernate.igu;
+package com.toDoHibernate.ui.utilities;
 
 public class View {
     String fileName;

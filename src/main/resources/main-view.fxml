@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #1D1D1D;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toDoHibernate.igu.controllers.MainViewController">
+<AnchorPane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #1D1D1D;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toDoHibernate.ui.controllers.MainViewController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="320.0" style="-fx-background-color: #272727;">
          <children>

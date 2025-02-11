@@ -1,4 +1,4 @@
-package com.toDoHibernate.igu.dto;
+package com.toDoHibernate.ui.dto;
 
 public class UserLoginDTO {
 

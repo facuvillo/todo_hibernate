@@ -2,7 +2,7 @@ package com.toDoHibernate.persistence.dao;
 
 import com.toDoHibernate.persistence.entities.ListTasks;
 import com.toDoHibernate.persistence.entities.Task;
-import com.toDoHibernate.persistence.util.HibernateUtil;
+import com.toDoHibernate.persistence.config.HibernateUtil;
 import jakarta.persistence.PersistenceException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;

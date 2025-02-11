@@ -1,10 +1,11 @@
-package com.toDoHibernate.igu.controllers;
+package com.toDoHibernate.ui.controllers;
 
-import com.toDoHibernate.appLogic.security.PasswordService;
+import com.toDoHibernate.security.PasswordService;
 import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;
 import com.toDoHibernate.persistence.entities.User;
-import com.toDoHibernate.utilities.Paths;
+import com.toDoHibernate.services.AuthService;
+import com.toDoHibernate.ui.utilities.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,7 +13,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-import static com.toDoHibernate.utilities.SwitcherView.switcher;
+import static com.toDoHibernate.ui.utilities.SwitcherView.switcher;
 
 public class LoginViewController {
 
@@ -39,7 +40,11 @@ public class LoginViewController {
             lblIncorretPassword.setVisible(true);
             return;
         }
-        switcher(event, Paths.MAIN_VIEW, userDAO.findByIdEager(user.getId()));
+
+        AuthService authService = new AuthService();
+        authService.login(user.getId());
+
+        switcher(event, Paths.MAIN_VIEW);
     }
 
     @FXML

@@ -1,4 +1,4 @@
-package com.toDoHibernate.appLogic.security;
+package com.toDoHibernate.security;
 
 public enum PassowordConditions {
 

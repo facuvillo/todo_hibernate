@@ -1,4 +1,4 @@
-package com.toDoHibernate.appLogic.security;
+package com.toDoHibernate.security;
 import org.mindrot.jbcrypt.BCrypt;
 
 

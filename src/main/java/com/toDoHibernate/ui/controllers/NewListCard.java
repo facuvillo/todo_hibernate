@@ -1,4 +1,4 @@
-package com.toDoHibernate.igu.controllers;
+package com.toDoHibernate.ui.controllers;
 
 import com.toDoHibernate.persistence.dao.ListDAOImple;
 import com.toDoHibernate.persistence.entities.ListTasks;

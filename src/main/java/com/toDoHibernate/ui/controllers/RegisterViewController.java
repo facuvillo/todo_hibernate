@@ -1,14 +1,14 @@
-package com.toDoHibernate.igu.controllers;
+package com.toDoHibernate.ui.controllers;
 
 
-import com.toDoHibernate.appLogic.security.PassowordConditions;
-import com.toDoHibernate.appLogic.security.PasswordService;
+import com.toDoHibernate.security.PassowordConditions;
+import com.toDoHibernate.security.PasswordService;
 import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;
 
 import com.toDoHibernate.persistence.entities.ListTasks;
 import com.toDoHibernate.persistence.entities.User;
-import com.toDoHibernate.utilities.Paths;
+import com.toDoHibernate.ui.utilities.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.toDoHibernate.utilities.SwitcherView.switcher;
+import static com.toDoHibernate.ui.utilities.SwitcherView.switcher;
 
 public class RegisterViewController {
 

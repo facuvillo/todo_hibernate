@@ -1,4 +1,4 @@
-package com.toDoHibernate.appLogic.security;
+package com.toDoHibernate.security;
 
 public interface hashService {
     String hashPassword(String password);

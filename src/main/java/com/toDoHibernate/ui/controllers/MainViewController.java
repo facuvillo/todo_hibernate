@@ -1,12 +1,12 @@
-package com.toDoHibernate.igu.controllers;
+package com.toDoHibernate.ui.controllers;
 
 import com.toDoHibernate.persistence.dao.ListDAOImple;
 import com.toDoHibernate.persistence.dao.TaskDAOImple;
-import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;
 import com.toDoHibernate.persistence.entities.ListTasks;
 import com.toDoHibernate.persistence.entities.Task;
 import com.toDoHibernate.persistence.entities.User;
+import com.toDoHibernate.services.AuthenticatedUser;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +35,7 @@ public class MainViewController {
     private User currentUser;
     private ListTasks currentListTask;
 
-    public void initialize(User currentUser) throws IOException {
+    public void initialize() throws IOException {
         setCurrentUser(currentUser);
         setUserLabels();
         setCurrentList(listDAO.findByIdEager(currentUser.getListTasks().getFirst().getId()));
@@ -51,7 +51,7 @@ public class MainViewController {
     }
 
     private void setCurrentUser(User user) {
-        this.currentUser = user;
+        this.currentUser = AuthenticatedUser.getInstance().getUser();
     }
 
     private void setCurrentList(ListTasks currentListTask) {
@@ -75,7 +75,7 @@ public class MainViewController {
             newTask.setList(currentListTask);
             currentListTask.getTasks().add(newTask);
             taskDAO.create(newTask);
-            setCurrentList(listDAO.findByIdEager(currentUser.getId()));
+            setCurrentList(listDAO.findByIdEager(this.currentListTask.getId()));
             addNewCardTask(newTask);
             inputNewTask.requestFocus();
         }
@@ -145,11 +145,11 @@ public class MainViewController {
     private void initialSetNewLists() throws IOException {
         if (!this.currentUser.getListTasks().isEmpty()){
             for (ListTasks listTasks : this.currentUser.getListTasks()){
-                if (!listTasks.getTitle().equals("General")){
+                if (!listTasks.getTitle().equals("General") && !listTasks.getTitle().isEmpty()){
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/list-card.fxml"));
                     Pane pane = loader.load();
                     NewListCard NewListCard = loader.getController();
-                    NewListCard.initialize(this.currentUser.getListTasks().getLast());
+                    NewListCard.initialize(listTasks);
                     vboxNewList.getChildren().add(pane);
                 }
             }

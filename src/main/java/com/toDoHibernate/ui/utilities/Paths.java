@@ -1,7 +1,5 @@
-package com.toDoHibernate.utilities;
+package com.toDoHibernate.ui.utilities;
 
-
-import com.toDoHibernate.igu.View;
 
 public enum Paths {
 

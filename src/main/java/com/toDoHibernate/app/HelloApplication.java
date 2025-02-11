@@ -1,6 +1,6 @@
-package com.toDoHibernate.igu.controllers;
+package com.toDoHibernate.app;
 
-import com.toDoHibernate.utilities.Paths;
+import com.toDoHibernate.ui.utilities.Paths;
 import io.github.cdimascio.dotenv.Dotenv;
 import javafx.application.Application;
 

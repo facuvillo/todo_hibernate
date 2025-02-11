@@ -1,6 +1,6 @@
 package com.toDoHibernate.persistence.dao;
 
-import com.toDoHibernate.persistence.util.HibernateUtil;
+import com.toDoHibernate.persistence.config.HibernateUtil;
 import com.toDoHibernate.persistence.entities.User;
 import jakarta.persistence.PersistenceException;
 import org.hibernate.Session;

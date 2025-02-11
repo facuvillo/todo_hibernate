@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="cardTaskPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="1250.0" style="-fx-border-radius: 20; -fx-background-radius: 10; -fx-background-color: #2D2D2D;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toDoHibernate.igu.controllers.CardTaskController">
+<AnchorPane fx:id="cardTaskPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="1250.0" style="-fx-border-radius: 20; -fx-background-radius: 10; -fx-background-color: #2D2D2D;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toDoHibernate.ui.controllers.CardTaskController">
    <children>
       <AnchorPane id="checkBox" prefHeight="64.0" prefWidth="64.0" stylesheets="@css/style.css">
          <children>

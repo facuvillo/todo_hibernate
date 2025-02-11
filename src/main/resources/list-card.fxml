@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="cardListPane" prefHeight="45.0" prefWidth="320.0" styleClass="newListContainer" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toDoHibernate.igu.controllers.NewListCard">
+<AnchorPane fx:id="cardListPane" prefHeight="45.0" prefWidth="320.0" styleClass="newListContainer" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toDoHibernate.ui.controllers.NewListCard">
    <children>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>

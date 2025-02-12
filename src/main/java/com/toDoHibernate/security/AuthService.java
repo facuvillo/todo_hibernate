@@ -1,4 +1,4 @@
-package com.toDoHibernate.services;
+package com.toDoHibernate.security;
 
 import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;

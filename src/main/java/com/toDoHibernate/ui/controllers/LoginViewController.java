@@ -4,7 +4,7 @@ import com.toDoHibernate.security.PasswordService;
 import com.toDoHibernate.persistence.dao.UserDAO;
 import com.toDoHibernate.persistence.dao.UserDAOImpl;
 import com.toDoHibernate.persistence.entities.User;
-import com.toDoHibernate.services.AuthService;
+import com.toDoHibernate.security.AuthService;
 import com.toDoHibernate.ui.utilities.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

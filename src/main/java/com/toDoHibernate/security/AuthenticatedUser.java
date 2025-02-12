@@ -1,4 +1,4 @@
-package com.toDoHibernate.services;
+package com.toDoHibernate.security;
 
 import com.toDoHibernate.persistence.entities.User;
 

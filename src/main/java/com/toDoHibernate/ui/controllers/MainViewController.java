@@ -6,7 +6,7 @@ import com.toDoHibernate.persistence.dao.UserDAOImpl;
 import com.toDoHibernate.persistence.entities.ListTasks;
 import com.toDoHibernate.persistence.entities.Task;
 import com.toDoHibernate.persistence.entities.User;
-import com.toDoHibernate.services.AuthenticatedUser;
+import com.toDoHibernate.security.AuthenticatedUser;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,7 +82,6 @@ public class MainViewController {
     }
 
     private void setCardsTasks() throws IOException {
-
         if (!vboxCardsTasks.getChildren().isEmpty()){
             vboxCardsTasks.getChildren().clear();
         }
@@ -145,35 +144,34 @@ public class MainViewController {
     private void initialSetNewLists() throws IOException {
         if (!this.currentUser.getListTasks().isEmpty()){
             for (ListTasks listTasks : this.currentUser.getListTasks()){
-                if (!listTasks.getTitle().equals("General") && !listTasks.getTitle().isEmpty()){
+                if (!listTasks.getTitle().equals("General")){
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/list-card.fxml"));
                     Pane pane = loader.load();
-                    NewListCard NewListCard = loader.getController();
-                    NewListCard.initialize(listTasks);
+                    NewListCardController newListCardController = loader.getController();
+                    newListCardController.setLabel(listTasks.getTitle());
+                    newListCardController.btnNewList.setOnAction(event -> {
+                        try {
+                            changeList(newListCardController.getListTasks());
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
                     vboxNewList.getChildren().add(pane);
                 }
             }
         }
     }
 
-    private void createNewList(){
-        ListTasks newListTasks = new ListTasks("New List");
-        this.currentUser.getListTasks().add(newListTasks);
-        userDAO.update(this.currentUser);
-        updateCurrentUser();
-    }
-
     @FXML
     private void addNewListTasks() throws IOException {
-        createNewList();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/list-card.fxml"));
         Pane pane = loader.load();
-        NewListCard newListCard = loader.getController();
-        newListCard.initialize(this.currentUser.getListTasks().getLast());
-        Platform.runLater(() -> newListCard.txtListTitle.requestFocus());
-        newListCard.txtListTitle.setOnMouseClicked(event -> {
+        NewListCardController newListCardController = loader.getController();
+        newListCardController.initializeNewListCard();
+        Platform.runLater(() -> newListCardController.txtListTitle.requestFocus());
+        newListCardController.btnNewList.setOnAction(event -> {
             try {
-                changeList(newListCard.getListTasks());
+                changeList(newListCardController.getListTasks());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

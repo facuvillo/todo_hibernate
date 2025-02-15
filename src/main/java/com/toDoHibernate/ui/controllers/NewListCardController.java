@@ -14,20 +14,29 @@ import javafx.scene.layout.VBox;
 
 public class NewListCardController {
 
-    @FXML private AnchorPane cardListPane;
-    @FXML private Label lblTitleList;
-    @FXML public TextField txtListTitle;
-    @FXML public Button btnNewList;
+    @FXML
+    private AnchorPane cardListPane;
+    @FXML
+    private Label lblTitleList;
+    @FXML
+    public TextField txtListTitle;
+    @FXML
+    public Button btnNewList;
     private final ListDAOImple listDAO = new ListDAOImple();
-    private final UserDAOImpl userDAO= new UserDAOImpl();
+    private final UserDAOImpl userDAO = new UserDAOImpl();
     private ListTasks listTasks;
-    private final User currentUser = AuthenticatedUser.getInstance().getUser();
+    private boolean isSaved = false;
 
     public void initializeNewListCard() {
         txtListTitle.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue) {
+            if (!newValue && !isSaved) {
                 saveText();
             }
+        });
+
+        txtListTitle.setOnAction(event -> {
+            saveText();
+            isSaved = true;
         });
     }
 
@@ -37,22 +46,27 @@ public class NewListCardController {
 
     @FXML
     private void saveText() {
+        if (isSaved) return;
+
         String titleList = txtListTitle.getText();
-        if(titleList.isEmpty()){
+        if (titleList.isEmpty()) {
             txtListTitle.setText("New List");
         }
         createNewList(titleList);
         setLabel(titleList);
+
+        isSaved = false;
     }
 
     private void createNewList(String title) {
         this.listTasks = new ListTasks(title);
-        this.currentUser.getListTasks().add(this.listTasks);
-        userDAO.update(this.currentUser);
-        userDAO.findByIdEager(this.currentUser.getId());
+        AuthenticatedUser.getInstance().getUser().getListTasks().add(this.listTasks);
+        userDAO.update(AuthenticatedUser.getInstance().getUser());
+        AuthenticatedUser.getInstance().setUser(userDAO.findByIdEager(AuthenticatedUser.getInstance().getUser().getId()));
+        this.listTasks = AuthenticatedUser.getInstance().getUser().getListTasks().getLast();
     }
 
-    public void setLabel(String title){
+    public void setLabel(String title) {
         lblTitleList.setText(title);
         lblTitleList.setVisible(true);
         txtListTitle.setVisible(false);
@@ -65,6 +79,4 @@ public class NewListCardController {
             vbox.getChildren().remove(cardListPane);
         }
     }
-
-
 }

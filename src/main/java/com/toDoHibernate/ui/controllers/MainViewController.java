@@ -169,7 +169,7 @@ public class MainViewController {
         NewListCardController newListCardController = loader.getController();
         newListCardController.initializeNewListCard();
         Platform.runLater(() -> newListCardController.txtListTitle.requestFocus());
-        newListCardController.btnNewList.setOnAction(event -> {
+        newListCardController.btnNewList.setOnAction(click -> {
             try {
                 changeList(newListCardController.getListTasks());
             } catch (IOException e) {

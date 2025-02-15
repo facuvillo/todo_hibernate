@@ -3,6 +3,8 @@ package com.toDoHibernate.persistence.dao;
 import com.toDoHibernate.persistence.entities.ListTasks;
 import com.toDoHibernate.persistence.entities.Task;
 import com.toDoHibernate.persistence.config.HibernateUtil;
+import com.toDoHibernate.persistence.entities.User;
+import com.toDoHibernate.security.AuthenticatedUser;
 import jakarta.persistence.PersistenceException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -83,10 +85,18 @@ public class ListDAOImple implements ListDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         // 2
         try{
-            session.beginTransaction();
+            //session.beginTransaction();
+
             ListTasks listTasks = this.findById(id);
-            session.remove(listTasks);
-            session.getTransaction().commit();
+
+            User user = AuthenticatedUser.getInstance().getUser();
+
+            if (user.getListTasks().contains(listTasks)) {
+                System.out.println("CHECKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+            }
+
+//            session.remove(listTasks);
+//            session.getTransaction().commit();
         }catch(PersistenceException e){
             System.out.println("Error: "+e.getMessage());
             session.getTransaction().rollback();
@@ -98,4 +108,29 @@ public class ListDAOImple implements ListDAO {
         // 4
         return true;
     }
+
+    /*
+    @Override
+    public Boolean taskDelete(Long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            Task task = session.get(Task.class, id);
+            if (task != null) {
+                // Remover la tarea de la lista asociada
+                ListTasks list = task.getList();
+                if (list != null) {
+                    list.getTasks().remove(task);
+                }
+                session.remove(task);
+            }
+            session.getTransaction().commit();
+        } catch (PersistenceException e) {
+            return false;
+        } finally {
+            session.close();
+        }
+        return true;
+    }
+    * */
 }

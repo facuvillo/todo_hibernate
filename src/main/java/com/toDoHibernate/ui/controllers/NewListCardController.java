@@ -44,6 +44,10 @@ public class NewListCardController {
         return listTasks;
     }
 
+    public void setListTasks(ListTasks listTasks) {
+        this.listTasks = listTasks;
+    }
+
     @FXML
     private void saveText() {
         if (isSaved) return;
@@ -62,7 +66,7 @@ public class NewListCardController {
         this.listTasks = new ListTasks(title);
         AuthenticatedUser.getInstance().getUser().getListTasks().add(this.listTasks);
         userDAO.update(AuthenticatedUser.getInstance().getUser());
-        AuthenticatedUser.getInstance().setUser(userDAO.findByIdEager(AuthenticatedUser.getInstance().getUser().getId()));
+        AuthenticatedUser.getInstance().updateUser();
         this.listTasks = AuthenticatedUser.getInstance().getUser().getListTasks().getLast();
     }
 

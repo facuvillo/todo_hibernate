@@ -86,13 +86,19 @@ public class ListDAOImple implements ListDAO {
         // 2
         try{
             //session.beginTransaction();
-
-            ListTasks listTasks = this.findById(id);
-
+            // Busco la lista
+            ListTasks currentListTasks = this.findById(id);
+            // Obtengo la intancia del usuario
             User user = AuthenticatedUser.getInstance().getUser();
 
-            if (user.getListTasks().contains(listTasks)) {
-                System.out.println("CHECKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+            for (ListTasks listTasks : user.getListTasks()){
+                if (listTasks.getId() == currentListTasks.getId()){
+                    session.beginTransaction();
+                    session.remove(listTasks);
+                    session.getTransaction().commit();
+                    AuthenticatedUser.getInstance().updateUser();
+                    return true;
+                }
             }
 
 //            session.remove(listTasks);

@@ -1,11 +1,13 @@
 package com.toDoHibernate.security;
 
+import com.toDoHibernate.persistence.dao.UserDAOImpl;
 import com.toDoHibernate.persistence.entities.User;
 
 public class AuthenticatedUser {
 
     private static AuthenticatedUser instance;
     private User user;
+    private UserDAOImpl userDAO = new UserDAOImpl();
 
     private AuthenticatedUser() {}
 
@@ -22,6 +24,10 @@ public class AuthenticatedUser {
 
     public void setUser(User user){
         this.user = user;
+    }
+
+    public void updateUser(){
+        AuthenticatedUser.getInstance().setUser(userDAO.findByIdEager(user.getId()));
     }
 
 }

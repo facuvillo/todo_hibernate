@@ -148,6 +148,7 @@ public class MainViewController {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/list-card.fxml"));
                     Pane pane = loader.load();
                     NewListCardController newListCardController = loader.getController();
+                    newListCardController.setListTasks(listTasks);
                     newListCardController.setLabel(listTasks.getTitle());
                     newListCardController.btnNewList.setOnAction(event -> {
                         try {
